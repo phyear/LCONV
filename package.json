@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@datagridxl/datagridxl2": "^2.0.20",
-    "vue": "^3.3.11"
+    "pinia": "^2.1.7",
+    "vue": "^3.3.11",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.54.2",

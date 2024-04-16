@@ -20,10 +20,10 @@
 
 <script setup>
     import { onMounted, reactive, ref } from 'vue';
-    import convertData from '../assets/convert_data.json';
+    import {all_trans} from '../util/source';
     const data = reactive([]);
     onMounted(() => {
-        data.push(...convertData);
+        data.push(...all_trans);
     });
    
 </script>

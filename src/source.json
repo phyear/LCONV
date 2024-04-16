@@ -1,0 +1,23 @@
+[
+  {
+     "name": "Excel",
+     "code": "excel",
+     "accept":".xlsx,.xls",
+     "canTran": [
+        {
+            "code":"csv",
+            "name":"Excel To CSV",
+            "icon":"#icon-Excel",
+            "description":"",
+            "color":"rgb(124 58 237)"
+        },
+        {
+            "code":"html",
+            "name":"Excel To HTML",
+            "icon":"#icon-Excel",
+            "description":"",
+            "color":"rgb(124 58 50)"
+        }
+     ]
+  }
+]

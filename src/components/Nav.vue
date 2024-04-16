@@ -2,7 +2,7 @@
     <nav class="max-w-screen-2xl w-full flex mx-auto h-20">
     <div class="flex md:w-1/5  w-full">
       <div class="flex items-center">
-        <svg class="icon text-4xl dark:text-blue-700 text-blue-700" aria-hidden="true">
+        <svg class="icon text-4xl dark:text-blue-600 text-blue-600" aria-hidden="true">
           <use xlink:href="#icon-table"></use>
         </svg>
         <div class="ml-1 text-xl font-semibold text-slate-800 dark:text-slate-300">IConvert</div>
