@@ -34,9 +34,9 @@
 
 <script setup>
   import { ref, reactive} from 'vue'
-  import {source} from '../util/source'
-  import {readExcel} from '../util/fileutil'
-  import { rowColNumberStore } from '../store/RowColNumber'
+  import {source} from '../../util/source'
+  import {readExcel} from '../../util/fileutil'
+  import { rowColNumberStore } from '../../store/RowColNumber'
   import { onMounted } from 'vue';
 
   const rowColNumber = rowColNumberStore()

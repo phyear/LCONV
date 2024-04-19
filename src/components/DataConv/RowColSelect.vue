@@ -11,7 +11,7 @@
 
 <script setup>
    import { ref, defineProps, onMounted } from 'vue'
-   import { rowColNumberStore } from '../store/RowColNumber'
+   import { rowColNumberStore } from '../..//store/RowColNumber'
    import { Notification } from '@arco-design/web-vue';
 
 

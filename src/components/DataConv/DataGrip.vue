@@ -93,7 +93,7 @@
 <script setup>
 import DataGridXL from "@datagridxl/datagridxl2";
 import { ref, reactive, onMounted, computed } from "vue";
-import { rowColNumberStore } from '../store/RowColNumber'
+import { rowColNumberStore } from '../../store/RowColNumber'
 import { storeToRefs } from 'pinia'
 const counterStore = rowColNumberStore()
 

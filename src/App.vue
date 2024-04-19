@@ -1,9 +1,10 @@
 <script setup>
-import SelectList from './components/SelectList.vue'
-import Nav from './components/Nav.vue'
-import RowColSelect from './components/RowColSelect.vue'
-import GridEditor from './components/GridEditor.vue'
-import GridSource from './components/GridSource.vue'
+import SelectList from './components/DataConv/SelectList.vue'
+import Nav from './components/DataConv/Nav.vue'
+import RowColSelect from './components/DataConv/RowColSelect.vue'
+import GridEditor from './components/DataConv/GridEditor.vue'
+import GridSource from './components/DataConv/GridSource.vue'
+import DataGen from './components/DataConv/DataGen.vue'
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import GridSource from './components/GridSource.vue'
   <!--数据编辑区域-->
    <GridEditor/>
   <!--数据构建区域-->
-
+  <DataGen/>
   <!--选项卡片区域-->
   <SelectList/>
 </template>

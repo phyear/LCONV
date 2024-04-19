@@ -30,7 +30,7 @@
 import { IconDown, IconUp } from '@arco-design/web-vue/es/icon';
 import DataGrid from './DataGrip.vue'
 import RowColSelect from './RowColSelect.vue'
-import { rowColNumberStore } from '../store/RowColNumber'
+import { rowColNumberStore } from '../../store/RowColNumber'
 import { onMounted, reactive, ref } from "vue";
 
 

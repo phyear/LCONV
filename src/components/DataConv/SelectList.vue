@@ -20,7 +20,7 @@
 
 <script setup>
     import { onMounted, reactive, ref } from 'vue';
-    import {all_trans} from '../util/source';
+    import {all_trans} from '../../util/source';
     const data = reactive([]);
     onMounted(() => {
         data.push(...all_trans);
