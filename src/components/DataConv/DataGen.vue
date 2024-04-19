@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="w-full text-white h-60">
+            <div class="w-full  h-60">
                 <GenType/>
             </div>
         </div>
@@ -37,5 +37,5 @@
 </template>
 
 <script setup>
-    import {GenType} from './DataConv/GenType.vue'
+    import GenType from '../DataConv/GenType/GenType.vue'
 </script>
