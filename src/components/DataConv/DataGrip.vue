@@ -123,13 +123,15 @@ const ww = computed(() => {
   grip.events.on("deletecols", (e) => {
     counterStore.updateSourceData(grip.getData())
   });
+  grip.events.on("change", (e) => {
+    counterStore.updateSourceData(grip.getData())
+  });
   return col.value
 })
 
 
 // 重新计算 TableEditor中的数据
 const setData = () => {
-  console.log("setData==", sourceData.value)
   if (sourceData.value && sourceData.value.length > 0) {
     return sourceData.value
   } else {

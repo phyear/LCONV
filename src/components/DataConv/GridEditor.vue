@@ -37,7 +37,6 @@ import { onMounted, reactive, ref } from "vue";
 const rowColNumber = rowColNumberStore()
 
 const updateSelect = () => {
-    console.log(rowColNumber.hidden)
     rowColNumber.setHidden(!rowColNumber.hidden)
 }
 

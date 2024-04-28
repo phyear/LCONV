@@ -1,11 +1,16 @@
 <template>
-     <component :is="tabs[currentComponent]"></component>
+     <component :is="getToType.code ? tabs[getToType.code] : 'aa'"></component>
 </template>
 
 <script setup>
-  import {ref} from 'vue'
-  import Excel from './Excel.vue'
+  import {computed, ref} from 'vue'
+  import excel from './Excel.vue'
+  import json from './Json.vue'
+  import { rowColNumberStore } from '../../../store/RowColNumber'
+  import { storeToRefs } from 'pinia'
+  const rowColNumber = rowColNumberStore()
+  const { getToType } = storeToRefs(rowColNumber)
 
-  const currentComponent = ref('Excel')
-  const tabs = {Excel}
+  const tabs = {excel, json}
+  
 </script>

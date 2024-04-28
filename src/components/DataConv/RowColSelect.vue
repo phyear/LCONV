@@ -42,7 +42,6 @@
 
    const completedBlankLine = (row, col) => {
       const data = counterStore.sourceData;
-      console.log('data', data)
       const oldRow = data.length
       const oldCol = data[0].length
       // 如果行数大于当前行数 则减去后面的行

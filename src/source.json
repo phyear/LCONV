@@ -2,22 +2,77 @@
   {
      "name": "Excel",
      "code": "excel",
+     "copy": true,
+     "download": true,
+     "icon":"#icon-Excel",
      "accept":".xlsx,.xls",
      "canTran": [
+         {
+            "code":"json",
+            "name":"Excel To JSON",
+            "description":"",
+            "color":"rgb(124 58 50)"
+         },
         {
             "code":"csv",
             "name":"Excel To CSV",
-            "icon":"#icon-Excel",
             "description":"",
             "color":"rgb(124 58 237)"
         },
         {
             "code":"html",
             "name":"Excel To HTML",
-            "icon":"#icon-Excel",
             "description":"",
             "color":"rgb(124 58 50)"
         }
      ]
-  }
+  },
+  {
+    "name": "CSV",
+    "code": "csv",
+    "copy": true,
+    "icon":"#icon-Excel",
+    "download": true,
+    "accept":".csv",
+    "canTran": [
+       {
+           "code":"html",
+           "name":"CSV To HTML",
+           "description":"",
+           "color":"rgb(124 58 50)"
+       }
+    ]
+ },
+ {
+  "name": "HTML",
+  "code": "html",
+  "copy": true,
+  "download": true,
+  "accept":".html",
+  "icon":"#icon-HTML",
+  "canTran": [
+     {
+         "code":"csv",
+         "name":"HTML To CSV",
+         "description":"",
+         "color":"rgb(124 58 50)"
+     }
+  ]
+},
+{
+  "name": "JSON",
+  "code": "json",
+  "copy": true,
+  "download": true,
+  "accept":".json",
+  "icon":"#icon-json",
+  "canTran": [
+     {
+         "code":"csv",
+         "name":"JSON To CSV",
+         "description":"",
+         "color":"rgb(124 58 50)"
+     }
+  ]
+}
 ]
