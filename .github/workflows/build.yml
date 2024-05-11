@@ -39,4 +39,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:latest        
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:$(date +%s)-${{ github.ref_name }}        
