@@ -34,9 +34,14 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Get Current Time
+        id: get_time
+        run: |
+          DATE=$(date +'%Y-%m-%d-%H%M%S')
+          echo ::set-output name=date::${DATE}      
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:$(date +%s)-${{ github.ref_name }}        
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:${{ env.DATE }}-${{ github.ref_name }}        
