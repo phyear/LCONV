@@ -39,4 +39,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: $GITHUB_REPOSITORY:latest        
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:latest        
