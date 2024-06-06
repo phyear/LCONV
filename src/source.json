@@ -24,7 +24,13 @@
             "name":"Excel To HTML",
             "description":"",
             "color":"rgb(124 58 50)"
-        }
+        },
+        {
+         "code":"md",
+         "name":"Excel To Markdown",
+         "description":"",
+         "color":"rgb(124 58 50)"
+       }
      ]
   },
   {
@@ -74,5 +80,21 @@
          "color":"rgb(124 58 50)"
      }
   ]
-}
+},
+{
+   "name": "Markdown",
+   "code": "md",
+   "copy": true,
+   "download": true,
+   "accept":".md",
+   "icon":"#icon-json",
+   "canTran": [
+      {
+          "code":"csv",
+          "name":"Markdown To CSV",
+          "description":"",
+          "color":"rgb(124 58 50)"
+      }
+   ]
+ }
 ]

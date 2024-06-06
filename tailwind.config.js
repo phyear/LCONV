@@ -6,6 +6,7 @@ export default {
     extend: {},
   },
   plugins: [],
+  mode: 'jit',
   important: true,
 }
 

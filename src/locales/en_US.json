@@ -1,0 +1,55 @@
+{
+    "source.btn.loading": "Load File",
+    "source.btn.other": "Load Example",
+
+    "edit.op.undo":"Undo",
+    "edit.op.redo":"Redo",
+    "edit.op.transpose":"Transpose",
+    "edit.op.clean":"Clean",
+    "edit.op.deduplicate":"deduplicate",
+    "edit.op.deleteBlank":"Delete Blank",
+    "edit.op.uppercase":"Uppercase",
+    "edit.op.lowercase":"Lowercase", 
+    "edit.op.capitalize":"Capitalize",   
+
+    
+    "gen.btn.copy": "Copy",
+    "gen.btn.download": "Download",
+
+    "gen.json.parsing": "Parsing JSON",
+    "gen.json.mini": "Minify JSON",
+    "gen.json.splic": "Wrapper by 'data'",
+    "gen.json.type.array": "Array of Object",
+    "gen.json.type.2d": "2D Array",
+    "gen.json.type.column": "Column Array",
+    "gen.json.type.keyed": "Keyed Array",
+
+    "gen.md.type.escape":"Escape markdown table",
+    "gen.md.type.first":"First row as header",
+    "gen.md.type.pretty":"Pretty print markdown table",
+    "gen.md.type.simple":"Using simple table",
+    "gen.md.type.bold_first_row":"Bold first row",
+    "gen.md.type.bold_first_col":"Bold first column",
+
+    "gen.md.op.left": "Left",
+    "gen.md.op.right": "Right",
+    "gen.md.op.center": "Center",
+    "gen.md.op.title": "Text Align",
+
+    "gen.csv.op.title":"Delimiter",
+    "gen.csv.op.comma":"Comma(,)",
+    "gen.csv.op.tab":"Tab(TSV)",
+    "gen.csv.op.semicolon":"Semicolon(;)",
+    "gen.csv.op.colon":"Colon(:)",
+    "gen.csv.op.pipe": "Pipe",
+    "gen.csv.op.slash":"Slash(/)",
+    "gen.csv.op.octo":"Hash Mark(#)",
+
+
+    "gen.html.type.escape":"Escape HTML Table",
+    "gen.html.type.div":"Convert into div",
+    "gen.html.type.minify":"Minify HTML",
+    "gen.html.type.thead": "Using thead and tbody",
+    "gen.html.type.first_headers": "First row as header"
+
+}

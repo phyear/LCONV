@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .btn-common {
-    @apply bg-white text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white
+    @apply bg-white text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white !important
 }
+
+.gen_l {
+    @apply flex-col space-y-2 border-r-2 dark:border-r-0 pr-2 w-3/12 text-slate-600 font-medium p-2 !important 
+  }
+
+.gen_r {
+    @apply h-60 border-none bg-white dark:text-white dark:bg-slate-600  !important
+} 
+
+.arco-checkbox-label {
+    @apply dark:text-white !important
+ }

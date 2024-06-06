@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { code_type } from '../util/source.js'
+import { set } from 'vue-demi'
 
 export const rowColNumberStore = defineStore('rowColNumber', {
   state: () => ({
@@ -10,6 +11,8 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     toType:{"code":"json"}, // 目的类型
     canTrans:[], // 可转换类型列表
     data: [], // 数据
+    historyData:[JSON.stringify([['','',''],['','',''],['','',''],['','',''],['','','']])],
+    currentIndex:0,
     sourceData:[['','',''],['','',''],['','',''],['','',''],['','','']], // 统一二维数组 受DataSource影响,
     sourceText:null // 源文本
   }),
@@ -22,7 +25,10 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     getPreType: (state) => state.preType,
     getPreCode: (state) => state.preType.code,
     getToType: (state) => state.toType,
-    getToTypeCode: (state) => state.toType.code,
+    getToTypeCode: (state) => {
+       return state.toType.code
+    },
+    getData: (state) => state.data,
   }, 
   actions: {
     setRow(row) {
@@ -56,6 +62,7 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     updateSourceData(data) {
       this.row = data.length
       this.col = data[0].length
+      this.sourceData = data
       this.data = data
     },
     setTransTo(preCode, endCode) {
@@ -81,6 +88,10 @@ export const rowColNumberStore = defineStore('rowColNumber', {
       } else {
         this.toType = endData
       }
-    }
+    },
+    setHistoryData(data) {
+      this.historyData.push(JSON.stringify(data))
+      this.currentIndex = this.historyData.length - 1
+    },
   }
 })

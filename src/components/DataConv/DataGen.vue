@@ -16,13 +16,13 @@
                     <template #icon>
                         <icon-copy />
                     </template>
-                    Copy
+                    {{ $t('gen.btn.copy') }}
                 </a-button>
                 <a-button class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white">
                     <template #icon>
                         <icon-download />
                     </template>
-                    Download
+                    {{ $t('gen.btn.download') }}
                 </a-button>
             </div>
         </div>
@@ -30,9 +30,9 @@
             <div class="w-full text-white font-bold dark:bg-slate-700">
                 <div class="p-2 bg-slate-100 dark:bg-slate-700 flex items-center justify-start gap-x-4">
                     <a-button v-for="(item, index) in canTrans"
-                     class="bg-slate-100 hover:bg-blue-600 hover:text-white" :class="{ 'bg-blue-600 text-white': getToTypeCode == item.code }" 
+                     class="bg-slate-100  hover:bg-blue-600 hover:text-white font-medium dark:bg-slate-700  dark:hover:bg-blue-600 dark:hover:text-white" :class="{ active : item.code === getToTypeCode }" 
                      @click="btnClick(item.code)"
-                     >{{ item.name }}</a-button>
+                     >{{ item.name }} </a-button>
                 </div>
             </div>
 
@@ -45,16 +45,22 @@
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
     import GenType from '../DataConv/GenType/GenType.vue'
     import { rowColNumberStore } from '../../store/RowColNumber'
     import { storeToRefs } from 'pinia'
     import { code_type } from '../../util/source.js'
 
     const counterStore = rowColNumberStore()
-    const { canTrans , getToType, getToTypeCode } = storeToRefs(counterStore)
+    const { canTrans , toType, getToTypeCode} = storeToRefs(counterStore)
     
     const btnClick = (key) => {
         counterStore.setToType(code_type[key])
     }
 </script>
+
+<style scoped>
+   .active {
+     background-color: rgb(37 99 235) !important;
+     color: white !important;
+   }
+</style>

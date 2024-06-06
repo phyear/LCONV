@@ -16,19 +16,19 @@
           </a-select>
          </div>
          <div>
-              <a-button type="primary" shape="round" @click="$refs.fileInput.click()" class="bg-white text-blue-600 border-blue-600">
-                加载文件
+              <a-button type="primary" shape="round" @click="$refs.fileInput.click()" class="bg-white text-blue-600 dark:hover:bg-blue-600  dark:hover:text-white border-blue-600 font-medium dark:bg-slate-700">
+                {{ $t("source.btn.loading") }}
               </a-button>
               <input type="file" class="hidden" ref="fileInput" @change="onFileChange" :accept="getPreType?.accept"> 
             </div>
             <div>
-              <a-button type="primary" shape="round" @click="">
-                加载用例
+              <a-button type="primary" shape="round" @click="" class="bg-white text-blue-600 border-blue-600  dark:hover:bg-blue-600 dark:hover:text-white font-medium dark:bg-slate-700">
+                {{ $t("source.btn.other") }}
               </a-button>
             </div>
       </div>
       <div class="w-full text-white font-bold">
-        <a-textarea v-model="sourceText" class="bg-gray-800 dark:bg-slate-700 rounded-md flex flex-col h-40 text-white text-lg" :placeholder="`粘贴${getPreType?.name}数据或者上传${getPreType?.name}文件`" auto-size/>    
+        <a-textarea v-model="sourceText" @change="textChange" class="bg-gray-800 dark:bg-slate-700 rounded-md flex flex-col h-40 text-white text-lg" :placeholder="`粘贴${getPreType?.name}数据或者上传${getPreType?.name}文件`" auto-size/>    
       </div>
   </div>
 </template>
@@ -40,6 +40,8 @@
   import { rowColNumberStore } from '../../store/RowColNumber'
   import { onMounted } from 'vue';
   import { storeToRefs } from 'pinia'
+  import { TransferContext } from '../../context/TransferContext'
+  import { Notification } from '@arco-design/web-vue';
 
   const rowColNumber = rowColNumberStore()
 
@@ -47,12 +49,9 @@
   const data = reactive([]);
 
   
-  const {getPreType, getPreCode} = storeToRefs(rowColNumber)
+  const {getPreType, getPreCode, sourceText} = storeToRefs(rowColNumber)
 
     
-  const sourceText = computed(() => rowColNumber.sourceText);
-
-
   onMounted(() => {
     data.push(...source)
     // 初始化 转换对象的默认值以及可转换列表
@@ -61,14 +60,41 @@
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
-    const excelData = await readExcel(file);
-    rowColNumber.setSourceData(excelData.sourceData);
-    rowColNumber.setSourceText(excelData.sourceText);
+    if (file) {
+      const excelData = await readExcel(file, getPreCode.value);
+      console.log(excelData)
+      if('error' in excelData){
+        Notification.error({
+              title: excelData.error,
+              style: { }
+        })
+      } else {
+        rowColNumber.setSourceData(excelData.sourceData);
+        rowColNumber.data = excelData.sourceData;
+        rowColNumber.setSourceText(excelData.sourceText);
+        rowColNumber.setHistoryData(excelData.sourceData)
+      }
+    }
   }
 
   const onChange = (value) => {
     const preData = data.find(item => item.code === value)
     rowColNumber.setTypeInfo(preData)
+  }
+
+  const textChange = (value) => {
+    const excelData = TransferContext('SOURCE', getPreCode.value, value)
+    if('error' in excelData){
+        Notification.error({
+              title: excelData.error,
+              style: { }
+        })
+      } else {
+        rowColNumber.sourceData = excelData.sourceData;
+        rowColNumber.data = excelData.sourceData;
+        rowColNumber.sourceText = excelData.sourceText;
+        rowColNumber.setHistoryData(excelData.sourceData)
+      }
   }
 
 </script>

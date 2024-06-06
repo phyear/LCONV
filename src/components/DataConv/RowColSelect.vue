@@ -35,8 +35,10 @@
    const updateRowColNumber = (row, col) => {
       counterStore.row = row
       counterStore.col = col
-      counterStore.hidden = true,
-      counterStore.sourceData =  completedBlankLine(row, col)
+      counterStore.hidden = true
+      const source = completedBlankLine(row, col)
+      counterStore.sourceData =  source
+      counterStore.setHistoryData(source)  
       notify()
    }
 

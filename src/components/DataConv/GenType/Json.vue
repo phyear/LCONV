@@ -1,31 +1,31 @@
 <template>
-   <div class="h-full flex mt-2 text-slate-500">
-       <div class="flex-col space-y-2 border-r-2 pr-2 w-3/12">
-         <div class="flex items-center gap-x-2" >
+   <div class="h-full flex mt-2 text-slate-500 bg-white dark:bg-slate-700">
+       <div class="gen_l p-2">
+         <div class="flex items-center gap-x-2 dark:text-white" >
             <a-switch v-model="tran" checked-value="yes" unchecked-value="no" type="round"/>
-            <h3>解析JSON</h3>
+            <h3>{{ $t("gen.json.parsing") }}</h3>
          </div>
-         <div class="flex items-center gap-x-2" >
+         <div class="flex items-center gap-x-2 dark:text-white" >
             <a-switch v-model="mini" checked-value="yes" unchecked-value="no" type="round"/>
-            <span>压缩JSON</span>
+            <span>{{ $t("gen.json.mini") }}</span>
          </div>
-         <div class="flex items-center gap-x-2" >
+         <div class="flex items-center gap-x-2 dark:text-white" >
             <a-switch v-model="splic" checked-value="yes" unchecked-value="no" type="round"/>
-            <span>拼接前缀'data'</span>
+            <span>{{ $t("gen.json.splic") }}</span>
          </div>
 
-         <div class = "w-full flex-col space-y-2">
+         <div class = "w-full flex-col space-y-2 dark:text-white">
             <div>类型</div>
             <a-select v-model="type" class="w-25">
-               <a-option value="array" label="数组对象" />
-               <a-option value="2D" label="2D对象" />
-               <a-option value="colArray" label="列数组" />
-               <a-option value="keyArray" label="主键数组" />
+               <a-option value="array" :label="$t('gen.json.type.array')" />
+               <a-option value="2D" :label="$t('gen.json.type.2d')" />
+               <a-option value="colArray" :label="$t('gen.json.type.column')" />
+               <a-option value="keyArray" :label="$t('gen.json.type.keyed')" />
             </a-select>
          </div>
        </div>
        <div class ="w-9/12">
-         <a-textarea class="h-60 border-none bg-white" v-model="dataStr"/>
+         <a-textarea class="gen_r"  v-model="dataStr"/>
        </div>
        <div style="display: none;">{{ ww }}</div>
    </div>
@@ -60,6 +60,7 @@
      })
 
      const tranData = (type, tran, datas) => {
+          console.log(datas)
           let res = []
           // 将二维数组转成对象数组
           if ('array' == type) {
@@ -100,3 +101,9 @@
         return res
      }
 </script>
+
+<style>
+    .arco-switch  {
+      @apply dark:bg-slate-500 !important;
+    }
+</style>
