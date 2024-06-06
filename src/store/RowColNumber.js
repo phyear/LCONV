@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { code_type } from '../util/source.js'
-import { set } from 'vue-demi'
 
 export const rowColNumberStore = defineStore('rowColNumber', {
   state: () => ({
