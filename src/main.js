@@ -6,9 +6,8 @@ import '@arco-design/web-vue/dist/arco.css';
 import ArcoVueIcon from '@arco-design/web-vue/es/icon';
 import { createPinia } from 'pinia'
 import { Notification } from '@arco-design/web-vue';
-import i18n from './locales'
+import i18n from './locales.js'
 
-console.log(i18n)
 const app = createApp(App)
 .use(ArcoVue)
 .use(ArcoVueIcon)
