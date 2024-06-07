@@ -32,8 +32,9 @@ jobs:
       - name: Login to Docker Hub  
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: registry.cn-beijing.aliyuncs.com
+          username: ${{ secrets.AILI_USER }}
+          password: ${{ secrets.AILI_PASSWORD }}
       - name: GetTime
         id: get_time
         run: DATE=$(date +'%Y-%m-%d-%H%M%S')&&echo ::set-output name=date::${DATE} 
@@ -42,4 +43,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/lconv:${{ steps.get_time.outputs.date  }}-${{ github.ref_name }}        
+          tags: registry.cn-beijing.aliyuncs.com/lconv/lconv:${{ steps.get_time.outputs.date  }}-${{ github.ref_name }}        
