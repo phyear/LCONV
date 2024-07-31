@@ -41,6 +41,7 @@
       const datas = [...data.value]
       let res = dataHandle[toType.value.code].toGenData(datas, config)
       dataStr.value = res
+      counterStore.setGenText(dataStr.value);
       return datas
    })
 

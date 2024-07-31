@@ -2,10 +2,10 @@
     <nav class="max-w-screen-2xl w-full flex mx-auto h-20">
     <div class="flex md:w-1/5  w-full">
       <div class="flex items-center">
-        <svg class="icon text-4xl dark:text-blue-600 text-blue-600" aria-hidden="true">
-          <use xlink:href="#icon-table"></use>
+        <svg class="icon text-2xl  fill-blue-600 stroke-2">
+          <use xlink:href="#icon-table_icon"></use>
         </svg>
-        <div class="ml-1 text-xl font-semibold text-slate-800 dark:text-slate-300">LConvert</div>
+        <div class="ml-2 text-xl font-bold text-blue-600 dark:text-blue-600">LConv</div>
       </div>
     </div>
     <div class="flex md:w-4/5 w-full justify-around">
@@ -16,7 +16,7 @@
       </div>
       <div class="flex items-center space-x-2">
          <div  @click="checkTheme" class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-200 dark:bg-slate-800   text-slate-900 dark:text-slate-100">
-          <svg class="icon text-xl flex text-slate-500 dark:text-slate-500"  aria-hidden="true">
+          <svg class="icon text-xl flex text-blue-600 dark:text-blue-600"  aria-hidden="true">
            <use v-bind:xlink:href="themeIcon"></use>
           </svg>
          </div>
@@ -26,10 +26,10 @@
               <a-button shape="circle" class="dark:bg-slate-800 bg-slate-200">
                 <template #icon>
                   <div v-if="locale == 'zh_CN' || locale == 'zh'" class="flex items-center">
-                     <icon-chinese-fill  class="w-6 h-6 text-slate-800 dark:text-slate-500" />
+                     <icon-chinese-fill  class="w-6 h-6 text-blue-600 dark:text-blue-600" />
                   </div>
                   <div v-if="locale == 'en_US'" class="flex items-center">
-                     <icon-english-fill  class="w-6 h-6 text-slate-800 dark:text-slate-500" />
+                     <icon-english-fill  class="w-6 h-6 text-blue-600 dark:text-blue-600" />
                   </div>
                 </template>
               </a-button>
@@ -53,15 +53,15 @@ import { onMounted } from 'vue';
 const { t, locale } = useI18n();
 
 const dark = ref(false);
-const themeIcon = ref('#icon-cc-month');
+const themeIcon = ref('#icon-moon');
 
 const localeS = localeStore()
 
 onMounted(() => {
    let theme = localeS.dark
-   console.log(theme)
    dark.value = theme == 'dark'
    checkTheme()
+
 })
 
 const checkTheme = () => {
@@ -72,7 +72,7 @@ const checkTheme = () => {
     localeS.setDark('dark')
   } else {
     document.documentElement.classList.remove('dark');
-    themeIcon.value = '#icon-cc-month';
+    themeIcon.value = '#icon-moon';
     localeS.setDark('light')
   }
 }

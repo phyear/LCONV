@@ -24,8 +24,6 @@ class JsonTransfer extends Tranfer {
            }
            dataList.push(temp)
         }
-        console.log(data)
-        console.log(dataList)
         result.sourceText = data;
         result.sourceData = dataList
         return result 
@@ -45,9 +43,62 @@ class JsonTransfer extends Tranfer {
         return result
     }
 
-    toGenData(data) {
-
+    toGenData(data, config) {
+        const {type, splic, mini, tran} = config
+        let res = this.tranData(type, tran, data);
+        if('yes' == splic){
+           res = {'data': res}
+        }
+        // 将二维数组转换成字符串
+        if ('yes' == mini) {
+            res = JSON.stringify(res)
+        } else {
+            res = JSON.stringify(res, null, 2)
+        }
+        return res
     }
+
+    tranData (type, tran, datas) {
+        console.log(datas)
+        let res = []
+        // 将二维数组转成对象数组
+        if ('array' == type) {
+          const keys = datas[0];
+          datas.forEach((element, index) => {
+             if(index > 0) {
+                const obj = {};
+                element.forEach((item, i) => {
+                   obj[keys[i]] = item
+                })
+                res.push(obj)
+             }
+          });
+       } else if ('colArray' == type) {
+          // 将二维数组转成列数组
+          const keys = datas[0];
+          keys.forEach((key, index) => {
+             const values = [];
+             datas.forEach((element, i) => {
+                if(i > 0) {
+                   values.push(element[index])
+                }
+             });
+             const arr = {};
+             arr[key] = values
+             res.push(arr)
+          });
+       } else if ('keyArray' == type) {
+          // 将二维数组转成主键数组
+          const map = {}
+          datas.forEach((element, index) => {
+             map[index] = element;
+          });
+          res.push(map)
+      } else {
+         res = datas
+      }
+      return res
+   }
  }
 
 const jsonTransfer = new JsonTransfer()

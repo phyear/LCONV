@@ -25,7 +25,10 @@ class CsvTransfer extends Tranfer {
 
     toGenData(data, config) {
         let op = config.op
-        let type = config.type
+        let type = ','
+        if(config.type){
+            type = config.type
+        }
         const tableRows = [];
         console.log(data)
         for(let item of data){

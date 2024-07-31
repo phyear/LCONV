@@ -143,7 +143,6 @@ let grid = new DataGridXL(dgxl.value, dgxlOptions)
 // 用于监听row col变化，更新dgxl的数据
 const ww = computed(() => {
   dgxlOptions.data = setData()
-  console.log(localeStoreS.dark)
   if(localeStoreS.dark == 'dark'){
     dgxlOptions.theme = darkTheme
   } else {
@@ -183,7 +182,6 @@ const ww = computed(() => {
 const undo = () => {
   let length = counterStore.historyData.length
   if (length > 0) {
-    console.log(counterStore.currentIndex)
     if ((counterStore.currentIndex - 1 >= 0)) {
       let index = counterStore.currentIndex - 1
       let data = counterStore.historyData
@@ -193,9 +191,9 @@ const undo = () => {
   }
 }
 
+// 重做
 const redo = () => {
   let length = counterStore.historyData.length
-
   if ((counterStore.currentIndex + 1) < length) {
     let index = counterStore.currentIndex + 1
     let data = counterStore.historyData
@@ -233,7 +231,8 @@ const transpose = () => {
   
   }
 }
-
+  
+// 清空
 const clean = () => {
   if (grid.getData() && grid.getData().length > 0) {
     let data = JSON.parse(JSON.stringify(grid.getData()));
@@ -250,7 +249,7 @@ const clean = () => {
   }
 }
 
-
+// 清空空格
 const cleanBlank = () => {
   if (grid.getData() && grid.getData().length > 0) {
     let needDeleteRow = {}
@@ -320,7 +319,7 @@ const uppercase = () => {
     let str = JSON.stringify(grid.getData())
     let data = JSON.parse(str.toUpperCase());
     counterStore.updateSourceData(data)
-   counterStore.setHistoryData(data)
+    counterStore.setHistoryData(data)
   }
 }
 

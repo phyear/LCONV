@@ -12,13 +12,16 @@
             </div>
             <div class="flex gap-2">
                 <a-button 
-                    class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white">
+                    class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white"
+                    @click="copy">
                     <template #icon>
                         <icon-copy />
                     </template>
                     {{ $t('gen.btn.copy') }}
                 </a-button>
-                <a-button class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white">
+                <a-button 
+                   class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white"
+                   @click="downloadToFile">
                     <template #icon>
                         <icon-download />
                     </template>
@@ -29,7 +32,7 @@
         <div>
             <div class="w-full text-white font-bold dark:bg-slate-700">
                 <div class="p-2 bg-slate-100 dark:bg-slate-700 flex items-center justify-start gap-x-4">
-                    <a-button v-for="(item, index) in canTrans"
+                    <a-button v-for="(item, index) in source"
                      class="bg-slate-100  hover:bg-blue-600 hover:text-white font-medium dark:bg-slate-700  dark:hover:bg-blue-600 dark:hover:text-white" :class="{ active : item.code === getToTypeCode }" 
                      @click="btnClick(item.code)"
                      >{{ item.name }} </a-button>
@@ -48,14 +51,44 @@
     import GenType from '../DataConv/GenType/GenType.vue'
     import { rowColNumberStore } from '../../store/RowColNumber'
     import { storeToRefs } from 'pinia'
-    import { code_type } from '../../util/source.js'
+    import { code_type, source } from '../../util/source.js'
+    import { dataHandle } from '../../context/TransferContext'
 
     const counterStore = rowColNumberStore()
-    const { canTrans , toType, getToTypeCode} = storeToRefs(counterStore)
+    const { canTrans , toType, getToTypeCode, sourceData} = storeToRefs(counterStore)
+    import { Notification } from '@arco-design/web-vue';
     
     const btnClick = (key) => {
         counterStore.setToType(code_type[key])
     }
+
+    const copy = () => {
+        // 复制文本到剪贴板
+        navigator.clipboard.writeText(counterStore.genText).finally(() => {
+            Notification.success({
+            title: 'Copied to clipboard',
+            style: { }
+        })
+        })
+    }
+
+    const downloadToFile = () => {
+        if(toType.value.download){
+            // 根据不同类型执行不同的下载文件功能
+            const blob = dataHandle[toType.value.code].toFile(sourceData.value, counterStore.genText);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data' + toType.value.accept;
+            a.click();
+            URL.revokeObjectURL(url);
+        } else {
+            Notification.error({
+            title: '该类型不支持下载',
+            style: { }
+           })
+        }   
+      }
 </script>
 
 <style scoped>

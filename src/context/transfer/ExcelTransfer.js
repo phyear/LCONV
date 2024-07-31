@@ -24,13 +24,19 @@ class ExcelTransfer extends Tranfer {
     }
 
     toGenData(data, config) {
-        const workbook = XLSX.read(data, { type: 'binary' });
-        const firstSheetName = workbook.SheetNames[0];
-        const result = {}
-        result['sourceText'] = XLSX.utils.sheet_to_csv(workbook.Sheets[firstSheetName]); 
-        var jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName]);
-        result['sourceData'] = handleJSONToArray(jsonData);
-        return result;
+        console.log('config', config)
+        console.log('data:', data)
+        if(data.length == 0){
+           return ''
+        }
+        var dd = []
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            if (element.length > 0) {
+                dd[i] = element.join('\t')
+            }
+        }
+        return dd.join('\n')
     }
 
     fileToData(data){

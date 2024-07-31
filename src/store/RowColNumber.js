@@ -13,7 +13,8 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     historyData:[JSON.stringify([['','',''],['','',''],['','',''],['','',''],['','','']])],
     currentIndex:0,
     sourceData:[['','',''],['','',''],['','',''],['','',''],['','','']], // 统一二维数组 受DataSource影响,
-    sourceText:null // 源文本
+    sourceText:null, // 源文本
+    genText: null
   }),
   getters: {
     getRow: (state) => state.row,
@@ -87,10 +88,15 @@ export const rowColNumberStore = defineStore('rowColNumber', {
       } else {
         this.toType = endData
       }
+      this.sourceText = null
+      this.sourceData = [['','',''],['','',''],['','',''],['','',''],['','','']]
     },
     setHistoryData(data) {
       this.historyData.push(JSON.stringify(data))
       this.currentIndex = this.historyData.length - 1
     },
+    setGenText(data){
+      this.genText = data
+    }
   }
 })

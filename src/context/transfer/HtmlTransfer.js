@@ -30,18 +30,22 @@ class HtmlTransfer extends Tranfer {
         });
         const excelData = {}
         excelData['sourceData'] = data1
-        excelData['sourceText'] = tableHtml
+        excelData['sourceText'] = data
         return excelData
     }
 
     toGenData(data, config) {
         let op = config.op
-         
-        let usingDiv = op.indexOf('div') > -1
-        let minify = op.indexOf('minify') > -1
-        let thead = op.indexOf('thead') > -1
-        let first_headers = op.indexOf('thead') > -1
-    
+        let usingDiv = false
+        let minify = false
+        let thead = false
+        let first_headers = false
+        if(config.op){
+           usingDiv = op.indexOf('div') > -1
+           minify = op.indexOf('minify') > -1
+           thead = op.indexOf('thead') > -1
+           first_headers = op.indexOf('thead') > -1
+        }
         let tableHTML = usingDiv ? '<div class="table">' : '<table>';
         let level = 1
         let aa = level;
