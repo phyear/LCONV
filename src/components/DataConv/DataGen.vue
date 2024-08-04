@@ -13,7 +13,7 @@
             <div class="flex gap-2">
                 <a-button 
                     class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white"
-                    @click="copy">
+                    @click="copyToClipboard">
                     <template #icon>
                         <icon-copy />
                     </template>
@@ -57,19 +57,24 @@
     const counterStore = rowColNumberStore()
     const { canTrans , toType, getToTypeCode, sourceData} = storeToRefs(counterStore)
     import { Notification } from '@arco-design/web-vue';
+      import { writeText } from 'clipboard-polyfill';
+
     
     const btnClick = (key) => {
         counterStore.setToType(code_type[key])
     }
-
-    const copy = () => {
-        // 复制文本到剪贴板
-        navigator.clipboard.writeText(counterStore.genText).finally(() => {
+  
+    const copyToClipboard = async() => {
+    try {
+        await writeText(counterStore.genText).then(() => {
             Notification.success({
             title: 'Copied to clipboard',
             style: { }
-        })
-        })
+            })
+        });
+    } catch (error) {
+        console.error('Failed to copy to clipboard:', error);
+    }
     }
 
     const downloadToFile = () => {
