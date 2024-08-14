@@ -30,7 +30,6 @@ class CsvTransfer extends Tranfer {
             type = config.type
         }
         const tableRows = [];
-        console.log(data)
         for(let item of data){
             if('t' == type){
                 tableRows.push(item.join('\t'))

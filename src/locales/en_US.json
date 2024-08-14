@@ -50,6 +50,12 @@
     "gen.html.type.div":"Convert into div",
     "gen.html.type.minify":"Minify HTML",
     "gen.html.type.thead": "Using thead and tbody",
-    "gen.html.type.first_headers": "First row as header"
+    "gen.html.type.first_headers": "First row as header",
+
+    "gen.sql.op.tableName":"Table Name",
+    "gen.sql.op.multiLine":"MultiLine",
+
+    "gen.yaml.op.keyValue":"Key Value",
+    "gen.yaml.op.prefix":"Prefix"
 
 }

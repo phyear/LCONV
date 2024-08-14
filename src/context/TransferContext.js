@@ -3,6 +3,8 @@ import { excelTransfer } from './transfer/ExcelTransfer.js'
 import { jsonTransfer } from './transfer/JsonTransfer.js'
 import { htmlTransfer } from './transfer/HtmlTransfer.js'
 import { markdownTransfer } from './transfer/MarkdownTransfer.js'
+import { yamlTransfer } from './transfer/YamlTransfer.js'
+import { sqlTransfer } from './transfer/SqlTransfer.js'
 
 // 常量定义
 const OP_GEN = 'GEN';
@@ -12,7 +14,9 @@ const dataHandle = {
     'excel': excelTransfer,
     'json': jsonTransfer,
     'html': htmlTransfer,
-    'md': markdownTransfer
+    'md': markdownTransfer,
+    'yaml': yamlTransfer,
+    'sql': sqlTransfer
 }
 
 // 输入验证函数，你可以根据实际情况调整这些验证函数的实现

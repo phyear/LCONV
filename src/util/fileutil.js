@@ -4,7 +4,6 @@ const readExcel =  async(file, type) => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const data = event.target.result;
-        console.log(dataHandle[type])
         const result = dataHandle[type].fileToData(data)
         resolve(result);
       };

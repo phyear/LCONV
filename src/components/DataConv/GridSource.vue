@@ -72,10 +72,17 @@ const onFileChange = async (e) => {
         style: {}
       })
     } else {
-      rowColNumber.setSourceData(excelData.sourceData);
-      rowColNumber.data = excelData.sourceData;
-      rowColNumber.setSourceText(excelData.sourceText);
-      rowColNumber.setHistoryData(excelData.sourceData)
+      if(!excelData.sourceData || excelData.sourceData.length === 0){
+        Notification.error({
+          title: '数据为空',
+          style: {}
+        })
+      } else {
+        rowColNumber.setSourceData(excelData.sourceData);
+        rowColNumber.data = excelData.sourceData;
+        rowColNumber.setSourceText(excelData.sourceText);
+        rowColNumber.setHistoryData(excelData.sourceData)
+      }
     }
   }
 }
@@ -86,7 +93,6 @@ const onChange = (value) => {
 }
 
 const textChange = (value) => {
-  console.info(value)
   const excelData = TransferContext('SOURCE', getPreCode.value, value)
   if ('error' in excelData) {
     Notification.error({

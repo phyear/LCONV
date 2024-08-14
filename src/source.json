@@ -87,7 +87,7 @@
    "copy": true,
    "download": true,
    "accept":".md",
-   "icon":"#icon-json",
+   "icon":"#icon-FileMarkdown",
    "canTran": [
       {
           "code":"csv",
@@ -96,5 +96,49 @@
           "color":"rgb(124 58 50)"
       }
    ]
- }
+ },
+ {
+   "name": "Yaml",
+   "code": "yaml",
+   "copy": true,
+   "download": true,
+   "accept":".yml,.yaml",
+   "icon":"#icon-yaml",
+   "canTran": [
+      {
+          "code":"excel",
+          "name":"Yaml To Excel",
+          "description":"",
+          "color":"rgb(124 58 50)"
+      },
+      {
+         "code":"md",
+         "name":"Yaml To Markdown",
+         "description":"",
+         "color":"rgb(124 58 50)"
+     }
+   ]
+ },
+ {
+  "name": "SQL",
+  "code": "sql",
+  "copy": true,
+  "download": true,
+  "accept":".sql",
+  "icon":"#icon-SQLjiankong",
+  "canTran": [
+     {
+         "code":"excel",
+         "name":"SQL To Excel",
+         "description":"",
+         "color":"rgb(124 58 50)"
+     },
+     {
+        "code":"md",
+        "name":"SQL To Markdown",
+        "description":"",
+        "color":"rgb(124 58 50)"
+    }
+  ]
+}
 ]

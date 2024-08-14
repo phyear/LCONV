@@ -11,7 +11,6 @@ class MarkdownTransfer extends Tranfer {
 
   to2DArray(data) {
     let html = marked(data)
-    console.log(html)
     const excelData = {}
     excelData['sourceData'] = this.htmlToArray(html)
     excelData['sourceText'] = data
@@ -105,7 +104,6 @@ class MarkdownTransfer extends Tranfer {
       data1.push(rowData);
     });
 
-    console.log(data1)
     return data1
   }
 }

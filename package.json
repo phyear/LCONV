@@ -14,7 +14,8 @@
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-i18n": "^9.13.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "yaml": "^2.5.0"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.54.2",

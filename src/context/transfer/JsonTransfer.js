@@ -59,7 +59,6 @@ class JsonTransfer extends Tranfer {
     }
 
     tranData (type, tran, datas) {
-        console.log(datas)
         let res = []
         // 将二维数组转成对象数组
         if ('array' == type) {
