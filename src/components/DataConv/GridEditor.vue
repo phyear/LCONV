@@ -1,9 +1,9 @@
 <template>
    <div class="max-w-screen-2xl m-auto p-6 dark:bg-slate-800 bg-white rounded-md flex flex-col gap-6 mb-8">
         <div class="rounded-md flex items-center gap-x-2">
-          <div class="w-8 h-8 rounded-full flex justify-center items-center" :style="{'background-color': 'rgb(59 130 246)'}">
-                <svg class="icon  text-xl flex text-slate-100" aria-hidden="true">
-                   <use v-bind:xlink:href="true ? '#icon-CSV' : '#icon-CSV'"></use>
+          <div class="w-7 h-7 rounded-full flex justify-center items-center" :style="{'background-color': toType.color}">
+                <svg class="icon  text-sm flex text-slate-100" aria-hidden="true">
+                   <use v-bind:xlink:href="toType.icon"></use>
                 </svg>
           </div>
           <div class="text-lg font-bold dark:text-slate-200">Data Editor</div>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="flex">
-            <DataGrid />
+           <DataGrid/>
         </div>
   </div>
 </template>
@@ -32,9 +32,11 @@ import DataGrid from './DataGrip.vue'
 import RowColSelect from './RowColSelect.vue'
 import { rowColNumberStore } from '../../store/RowColNumber'
 import { onMounted, reactive, ref } from "vue";
-
+import { storeToRefs } from 'pinia'
 
 const rowColNumber = rowColNumberStore()
+const { toType } = storeToRefs(rowColNumber)
+
 
 const updateSelect = () => {
     rowColNumber.setHidden(!rowColNumber.hidden)

@@ -4,32 +4,30 @@
      "code": "excel",
      "copy": true,
      "download": true,
-     "icon":"#icon-Excel",
+     "icon":"#icon-Excel1",
      "accept":".xlsx,.xls",
+     "color":"#34d399",
      "canTran": [
          {
             "code":"json",
             "name":"Excel To JSON",
-            "description":"",
-            "color":"rgb(124 58 50)"
+            "description":""
          },
         {
             "code":"csv",
             "name":"Excel To CSV",
-            "description":"",
-            "color":"rgb(124 58 237)"
+            "description":""
         },
         {
             "code":"html",
             "name":"Excel To HTML",
-            "description":"",
-            "color":"rgb(124 58 50)"
+            "description":""
         },
         {
          "code":"md",
          "name":"Excel To Markdown",
-         "description":"",
-         "color":"rgb(124 58 50)"
+         "description":""
+         
        }
      ]
   },
@@ -40,12 +38,13 @@
     "icon":"#icon-Excel",
     "download": true,
     "accept":".csv",
+    "color":"#84cc16",
     "canTran": [
        {
            "code":"html",
            "name":"CSV To HTML",
-           "description":"",
-           "color":"rgb(124 58 50)"
+           "description":""
+           
        }
     ]
  },
@@ -56,12 +55,12 @@
   "download": true,
   "accept":".html",
   "icon":"#icon-HTML",
+  "color":"#9a3412",
   "canTran": [
      {
          "code":"csv",
          "name":"HTML To CSV",
-         "description":"",
-         "color":"rgb(124 58 50)"
+         "description":""
      }
   ]
 },
@@ -72,12 +71,13 @@
   "download": true,
   "accept":".json",
   "icon":"#icon-json",
+  "color":"#0d9488",
   "canTran": [
      {
          "code":"csv",
          "name":"JSON To CSV",
-         "description":"",
-         "color":"rgb(124 58 50)"
+         "description":""
+         
      }
   ]
 },
@@ -87,14 +87,27 @@
    "copy": true,
    "download": true,
    "accept":".md",
-   "icon":"#icon-FileMarkdown",
+   "icon":"#icon-markdown1",
+   "color":"#f59e0b",
    "canTran": [
       {
           "code":"csv",
           "name":"Markdown To CSV",
-          "description":"",
-          "color":"rgb(124 58 50)"
-      }
+          "description":""
+          
+      },
+      {
+        "code":"sql",
+        "name":"Markdown To SQL",
+        "description":""
+        
+     },
+     {
+      "code":"yaml",
+      "name":"Markdown To Yaml",
+      "description":""
+      
+    }
    ]
  },
  {
@@ -103,19 +116,20 @@
    "copy": true,
    "download": true,
    "accept":".yml,.yaml",
-   "icon":"#icon-yaml",
+   "icon":"#icon-YAML",
+   "color":"#8b5cf6",
    "canTran": [
       {
           "code":"excel",
           "name":"Yaml To Excel",
-          "description":"",
-          "color":"rgb(124 58 50)"
+          "description":""
+          
       },
       {
          "code":"md",
          "name":"Yaml To Markdown",
-         "description":"",
-         "color":"rgb(124 58 50)"
+         "description":""
+         
      }
    ]
  },
@@ -126,18 +140,19 @@
   "download": true,
   "accept":".sql",
   "icon":"#icon-SQLjiankong",
+  "color":"#854d0e",
   "canTran": [
      {
          "code":"excel",
          "name":"SQL To Excel",
-         "description":"",
-         "color":"rgb(124 58 50)"
+         "description":""
+         
      },
      {
         "code":"md",
         "name":"SQL To Markdown",
-        "description":"",
-        "color":"rgb(124 58 50)"
+        "description":""
+        
     }
   ]
 }

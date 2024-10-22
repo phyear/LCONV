@@ -9,8 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@datagridxl/datagridxl2": "^2.0.20",
+    "@revolist/vue3-datagrid": "^4.10.20",
     "clipboard-polyfill": "^4.1.0",
+    "moment": "^2.30.1",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-i18n": "^9.13.1",
@@ -19,12 +20,12 @@
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.54.2",
-    "@handsontable/vue3": "^14.3.0",
+    "@handsontable/vue3": "^14.6.1",
     "@intlify/unplugin-vue-i18n": "^4.0.0",
     "@vitejs/plugin-vue": "^4.5.2",
     "autoprefixer": "^10.4.16",
     "cheerio": "^1.0.0-rc.12",
-    "handsontable": "^14.3.0",
+    "handsontable": "^14.6.1",
     "marked": "^12.0.2",
     "postcss": "^8.4.33",
     "remark": "^15.0.1",

@@ -1,19 +1,21 @@
 <template>
   <div class="max-w-screen-2xl m-auto p-6 dark:bg-slate-800 bg-white rounded-md flex flex-col gap-6 mb-8">
     <div class="rounded-md flex items-center gap-x-2">
-      <div class="w-8 h-8 rounded-full flex justify-center items-center"
-        :style="{ 'background-color': 'rgb(59 130 246)' }">
-        <svg class="icon  text-xl flex text-slate-100" aria-hidden="true">
-          <use v-bind:xlink:href="true ? '#icon-CSV' : '#icon-CSV'"></use>
+      <div class="w-7 h-7 rounded-full flex justify-center items-center"
+        :style="{ 'background-color': getPreType.color ? getPreType.color : 'rgb(59 130 246)' }">
+        <svg class="icon  text-sm flex text-slate-100" aria-hidden="true">
+          <use v-bind:xlink:href="getPreType.icon"></use>
         </svg>
       </div>
       <div class="text-lg font-bold dark:text-white">Data Source</div>
       <div class="">
-        <a-select :style="{ width: '100%' }" class="text-xl text-blue-600 " :bordered="false" v-model="getPreCode"
-          @change="onChange">
-          <a-option v-for="(item, index) in data" :key="index" :value="item.code"
-            class="text-md">{{ item.name }}</a-option>
-        </a-select>
+        <a-space direction="vertical" size="large">
+          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="getPreCode"
+            size='medium' @change="onChange">
+            <a-option v-for="(item, index) in data" :key="index" :value="item.code" class="text-md">{{ item.name
+              }}</a-option>
+          </a-select>
+        </a-space>
       </div>
       <div>
         <a-button type="primary" shape="round" @click="$refs.fileInput.click()"
@@ -32,7 +34,7 @@
     <div class="w-full text-white font-bold">
       <a-textarea v-model="sourceText" @change="textChange"
         class="bg-gray-800 dark:bg-slate-700 rounded-md flex flex-col h-40 text-white text-lg"
-        :placeholder="`粘贴${getPreType?.name}数据或者上传${getPreType?.name}文件`" auto-size />
+        :placeholder="`粘贴${getPreType?.name}数据或者上传${getPreType?.name}文件`"/>
     </div>
   </div>
 </template>
@@ -72,7 +74,7 @@ const onFileChange = async (e) => {
         style: {}
       })
     } else {
-      if(!excelData.sourceData || excelData.sourceData.length === 0){
+      if (!excelData.sourceData || excelData.sourceData.length === 0) {
         Notification.error({
           title: '数据为空',
           style: {}

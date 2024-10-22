@@ -13,4 +13,10 @@ export default defineConfig({
   })],
   cssCodeSplit: false,
   base: '/',
+  resolve: {
+    alias: {
+      '@': '/src', // 默认配置
+      '@utils': '/src/script'
+    }
+  }
 })

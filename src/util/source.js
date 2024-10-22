@@ -16,6 +16,7 @@ function tran(data, code_type){
             if(!tran['icon']){
                 tran['icon'] = code_type[endCode]['icon'];
             }
+            tran['color'] = code_type[endCode]['color'];
             all_trans.push(tran);
         }
     }

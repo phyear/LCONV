@@ -86,20 +86,19 @@
         <div class="text-xs"> {{ $t('edit.op.capitalize') }}</div>
       </div>
     </div>
-    <div class="w-11/12 h-100 p-2" style="overflow: hidden;">
-      <div ref="dgxl" class="w-full h-96"></div>
-      <div class="dark:text-white start-3" >datagrid by <a href="https://www.datagridxl.com/" class="hover:text-blue-500 text-blue-400">DataGridXL</a></div>
+    <div class="w-11/12 h-100 p-2" style="overflow: hidden; z-index: 0;">
+       <DataArea/>
     </div>
-    <div style="display: none;">{{ ww }}</div>
   </div>
 </template>
 
 <script setup>
-import DataGridXL from "@datagridxl/datagridxl2";
 import { ref, reactive, onMounted, computed } from "vue";
 import { rowColNumberStore } from '../../store/RowColNumber'
 import { localeStore } from '../../store/Locale.js'
 import { storeToRefs } from 'pinia'
+import DataArea from './DataArea.vue'
+
 
 
 
@@ -109,73 +108,6 @@ const localeStoreS = localeStore()
 
 const { row, col, sourceData, getSourceData } = storeToRefs(counterStore)
 
-
-
-
-let dgxl = ref()
-
-let dgxlOptions = reactive({
-  data: sourceData,
-  fontSize: 16,
-  theme:{}
-})
-
-let darkTheme =  {
-    "component":"#334155",
-    "sheet":"#1e293b",
-    "sheet|text":"#ffffff",
-    "blanksheet": "#334155",
-
-    "header":"#475569",
-    "header|text":"#ffffff",
-    "header:highlight": "#64748b",
-    "header:selected": "#334155",
-    "header:selected|text": "#ffffff",
-    "header-icon": "#ffffff",
-    "celleditor": "#3b82f6",
-
-    "freezeline"                : "#d1d5db",
-    "freezeline-tip"            : "#d1d5db",
-    "freezelineplaceholder"     : "#d1d5db",
-  }
-let grid = new DataGridXL(dgxl.value, dgxlOptions)
-
-// 用于监听row col变化，更新dgxl的数据
-const ww = computed(() => {
-  dgxlOptions.data = setData()
-  if(localeStoreS.dark == 'dark'){
-    dgxlOptions.theme = darkTheme
-  } else {
-    dgxlOptions.theme = {}
-  }
-  grid = new DataGridXL(dgxl.value, dgxlOptions);
-  grid.events.on('setcellvalues', function (e) {
-    counterStore.updateSourceData(grid.getData())
-    counterStore.setHistoryData(grid.getData())
-  });
-
-  grid.events.on('deletecols', function (e) {
-    counterStore.updateSourceData(grid.getData())
-    counterStore.setHistoryData(grid.getData())
-  })
-
-  grid.events.on('insertcols', function (e) {
-    counterStore.updateSourceData(grid.getData())
-    counterStore.setHistoryData(grid.getData())
-  })
-
-  grid.events.on('deleterows', function (e) {
-    counterStore.updateSourceData(grid.getData())
-    counterStore.setHistoryData(grid.getData())
-  })
-
-  grid.events.on('insertrows', function (e) {
-    counterStore.updateSourceData(grid.getData())
-    counterStore.setHistoryData(grid.getData())
-  })
-  // 绑定表格操作事件 触发行和列的重新计算
-  return col.value
-})
 
 // 撤销
 
@@ -205,8 +137,8 @@ const redo = () => {
 
 // 翻转
 const transpose = () => {
-  if (grid.getData() && grid.getData().length > 0) {
-    let matrix = JSON.parse(JSON.stringify(grid.getData()));
+  if (sourceData.value && sourceData.value.length > 0) {
+    let matrix = JSON.parse(JSON.stringify(sourceData.value));
     // 获取原数组的行数（即新数组的列数）
     const rowCount = matrix.length;
     // 获取原数组的列数（即新数组的行数），假设所有行的长度相同
@@ -234,8 +166,8 @@ const transpose = () => {
   
 // 清空
 const clean = () => {
-  if (grid.getData() && grid.getData().length > 0) {
-    let data = JSON.parse(JSON.stringify(grid.getData()));
+  if (sourceData.value && sourceData.value.length > 0) {
+    let data = JSON.parse(JSON.stringify(sourceData.value));
     data = data.map(row => {
        // 再次使用map函数遍历内层数组（即每一行）
         return row.map(element => {
@@ -251,10 +183,10 @@ const clean = () => {
 
 // 清空空格
 const cleanBlank = () => {
-  if (grid.getData() && grid.getData().length > 0) {
+  if (sourceData.value && sourceData.value.length > 0) {
     let needDeleteRow = {}
     let needDeleteCol = {}
-    let data = JSON.parse(JSON.stringify(grid.getData()));
+    let data = JSON.parse(JSON.stringify(sourceData.value));
 
 
     data.forEach((item, row) => {
@@ -303,7 +235,7 @@ const cleanBlank = () => {
 
 // 删除重复的行 
 const deduplicate = () => {
-  let data = JSON.parse(JSON.stringify(grid.getData()));
+  let data = JSON.parse(JSON.stringify(sourceData.value));
   data = data.filter((item) => {
     return data.hasOwnProperty(item) ? false : (data[item] = true);
   })
@@ -315,8 +247,8 @@ const deduplicate = () => {
 
 // 转大写 
 const uppercase = () => {
-  if (grid.getData() && grid.getData().length > 0) {
-    let str = JSON.stringify(grid.getData())
+  if (sourceData.value && sourceData.value.length > 0) {
+    let str = JSON.stringify(sourceData.value)
     let data = JSON.parse(str.toUpperCase());
     counterStore.updateSourceData(data)
     counterStore.setHistoryData(data)
@@ -325,8 +257,8 @@ const uppercase = () => {
 
 // 转大写 
 const lowercase = () => {
-  if (grid.getData() && grid.getData().length > 0) {
-    let str = JSON.stringify(grid.getData())
+  if (sourceData.value && sourceData.value.length > 0) {
+    let str = JSON.stringify(sourceData.value)
     let data = JSON.parse(str.toLowerCase());
     counterStore.updateSourceData(data)
     counterStore.setHistoryData(data)
@@ -335,8 +267,8 @@ const lowercase = () => {
 
 // 第一个字母转大写
 const firstUpper = () => {
-  if (grid.getData() && grid.getData().length > 0) {
-  let matrix = JSON.parse(JSON.stringify(grid.getData()));
+  if (sourceData.value && sourceData.value.length > 0) {
+  let matrix = JSON.parse(JSON.stringify(sourceData.value));
   for (let i = 0; i < matrix.length; i++) {
     const row = matrix[i];
     for (let j = 0; j < row.length; j++) {

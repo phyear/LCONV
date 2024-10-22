@@ -1,5 +1,6 @@
 import {Tranfer} from './Tranfer.js'
 import * as XLSX from 'xlsx';
+import moment from 'moment';
 
 
 class ExcelTransfer extends Tranfer {
@@ -40,12 +41,13 @@ class ExcelTransfer extends Tranfer {
     }
 
     fileToData(data){
-        const workbook = XLSX.read(data, { type: 'binary' });
+        const workbook = XLSX.read(data, { type: 'binary', cellDates: true, dateNF: 'YYYY-MM-dd HH:mm:ss'});
         const firstSheetName = workbook.SheetNames[0];
         const result = {}
-        result['sourceText'] = XLSX.utils.sheet_to_txt(workbook.Sheets[firstSheetName]); 
-        var jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName]);
+ 
+        var jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName], {cellDates: true});
         result['sourceData'] = this.handleJSONToArray(jsonData);
+        result['sourceText'] = this.toGenData(result['sourceData'], {});
         return result;
     }
 
@@ -56,12 +58,21 @@ class ExcelTransfer extends Tranfer {
         for(var i = 0; i < json.length; i++){
            var temp = [];
            for(var j = 0; j < header.length; j++){
-              temp.push(json[i][header[j]])
+              var dd = json[i][header[j]]
+              temp.push(this.formatDates(dd))
            }
            data.push(temp)
         }
         return data
      }
+
+     formatDates(data) {
+        if (data instanceof Date) {
+            // 使用moment.js来格式化日期
+            return moment(data).format('YYYY-MM-DD HH:mm:ss');
+          }
+        return data;
+      }
  }
 
 const excelTransfer = new ExcelTransfer()
