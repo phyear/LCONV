@@ -1,4 +1,12 @@
 import { dataHandle } from '../context/TransferContext.js';
+
+let cachedFileUrl;
+
+
+const cacheFileStream = (file) => {
+  cachedFileUrl = URL.createObjectURL(file);
+}
+
 const readExcel =  async(file, type) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
