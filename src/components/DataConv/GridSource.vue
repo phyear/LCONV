@@ -17,6 +17,19 @@
           </a-select>
         </a-space>
       </div>
+
+      // 对上传文件时 excel和csv支持多sheet页显示
+      <div class="" v-if="sheetNames.length > 0">
+        <a-space size="mini">
+          <span><a-divider direction="vertical" />Sheet</span>
+          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="activeSheet"
+            size='medium' @change="onSheetChange">
+            <a-option v-for="(item, index) in sheetNames" :key="index" :value="item" class="text-md">{{ item
+              }}</a-option>
+          </a-select>
+        </a-space>
+      </div>
+
       <div>
         <a-button type="primary" shape="round" @click="$refs.fileInput.click()"
           class="bg-white text-blue-600 dark:hover:bg-blue-600  dark:hover:text-white border-blue-600 font-medium dark:bg-slate-700">
@@ -54,6 +67,13 @@ const rowColNumber = rowColNumberStore()
 
 const data = reactive([]);
 
+let sheetNames = reactive([])
+
+let activeSheet = ref(null)
+
+let sheetDataMap = reactive({})
+
+
 
 const { getPreType, getPreCode, sourceText } = storeToRefs(rowColNumber)
 
@@ -64,10 +84,27 @@ onMounted(() => {
   rowColNumber.setTypeInfo(source[0], null)
 })
 
+// 当切换sheet页时
+
+const onSheetChange = (value) => {
+  console.log(sheetDataMap)
+  let excelData = sheetDataMap[value]
+  rowColNumber.setSourceData(excelData.sourceData);
+  rowColNumber.data = excelData.sourceData;
+  rowColNumber.setSourceText(excelData.sourceText);
+  rowColNumber.setHistoryData(excelData.sourceData)
+}
+
+// 文件上传时处理
 const onFileChange = async (e) => {
   const file = e.target.files[0];
   if (file) {
     const excelData = await readExcel(file, getPreCode.value);
+    if (excelData.sheetNames != null) {
+      sheetNames = excelData.sheetNames
+      activeSheet.value = excelData.sheetNames[0]
+      sheetDataMap = excelData.sheetDataMap
+    }
     if ('error' in excelData) {
       Notification.error({
         title: excelData.error,

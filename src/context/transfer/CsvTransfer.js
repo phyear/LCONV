@@ -42,11 +42,26 @@ class CsvTransfer extends Tranfer {
 
     fileToData(data){
         const workbook = XLSX.read(data, { type: 'binary' });
-        const firstSheetName = workbook.SheetNames[0];
+        const sheetNames = workbook.SheetNames;
+        
+        const sheetDataMap = {};
+
+        for (let i = 0; i < sheetNames.length; i++) {
+            const sheetName = sheetNames[i];
+            const jsonData = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName], {cellDates: true});
+            const result1 = {}
+            result1['sourceData'] = this.handleJSONToArray(jsonData);
+            result1['sourceText'] = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+            sheetDataMap[sheetName] = result1;
+        }
+
         const result = {}
-        result['sourceText'] = XLSX.utils.sheet_to_csv(workbook.Sheets[firstSheetName]); 
-        var jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName]);
-        result['sourceData'] = this.handleJSONToArray(jsonData);
+ 
+        result['sourceData'] = sheetDataMap[sheetNames[0]]['sourceData'];
+        result['sourceText'] = sheetDataMap[sheetNames[0]]['sourceText'];
+        result['sheetNames'] = sheetNames
+        result['sheetDataMap'] = sheetDataMap
+    
         return result;
     }
 
