@@ -17,8 +17,7 @@
           </a-select>
         </a-space>
       </div>
-
-      // 对上传文件时 excel和csv支持多sheet页显示
+      <!--对上传文件时 excel和csv支持多sheet页显示---->
       <div class="" v-if="sheetNames.length > 0">
         <a-space size="mini">
           <span><a-divider direction="vertical" />Sheet</span>
