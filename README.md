@@ -17,7 +17,7 @@
 
 ### 体验地址
 
-[http://47.116.24.134:10000/](http://47.116.24.134:10000/)
+[lcon.whycoder.fun](https://lcon.whycoder.fun/)
 
 ### 规划路线
 
