@@ -1,25 +1,24 @@
-<h2 style = "" align = "center">LConv: 优雅数据转换器工具</h2>
+<h1 style = "" align = "center">LConv: 🎈优雅数据转换器工具</h1>
 
 <p align = "center">
   Lconv 是一个优雅的数据转换器工具，支持多种数据之间的转换，包括：Excel、JSON、CSV、XML、Markdown等。
 </p>
 
 ---
-### 思维导图
 
-### 技术栈
+### 🏳️‍🌈 技术栈
 - node.js
 - vite
 - vue3
 - tailwindcss
 - pinia
 - vue-i18n
+- Handsontable
 
-### 体验地址
-
+### 🏝️ 体验地址
 [lcon.whycoder.fun](https://lcon.whycoder.fun/)
 
-### 规划路线
+### 🎯 规划路线
 
 #### 2025-04-01 支持
 - [x] 界面响应速度优化
@@ -43,7 +42,7 @@
 - [x] XML支持
 - [x] Markdown支持
 
-### 快速开始
+### 🚩 快速开始
 
 克隆仓库:
 ```
@@ -59,7 +58,7 @@ cd LCONV
 运行示例:
    npm start
 
-## docker部署
+### docker部署
 
 ```
   docker pull registry.cn-beijing.aliyuncs.com/lconv/lconv:@tag

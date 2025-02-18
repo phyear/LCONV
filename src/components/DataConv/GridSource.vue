@@ -128,6 +128,8 @@ const onFileChange = async (e) => {
 const onChange = (value) => {
   const preData = data.find(item => item.code === value)
   rowColNumber.setTypeInfo(preData)
+  sheetNames = []
+  sheetDataMap = {}
 }
 
 const textChange = (value) => {
