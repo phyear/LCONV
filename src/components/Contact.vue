@@ -38,19 +38,19 @@
     <section class="mb-8">
       <h2 class="text-xl font-semibold mb-4 dark:text-slate-300">{{ $t('contact.social') }}</h2>
       <div class="flex space-x-4">
-        <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
+        <a :href="config.social.gitee" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
            v-tooltip="'Gitee'">
           <svg class="icon w-7 h-7 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
             <use xlink:href="#icon-gitee"></use>
           </svg>
         </a>
-        <a href="https://github.com/phyear/LCONV" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
+        <a :href="config.social.github" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
            v-tooltip="'GitHub'">
           <svg class="icon w-7 h-7 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
             <use xlink:href="#icon-GitHub"></use>
           </svg>
         </a>
-        <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
+        <a :href="config.social.wechat" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full hover:bg-blue-100 dark:hover:bg-slate-600 transition-colors group relative"
            v-tooltip="'WeChat'">
           <svg class="icon w-7 h-7 text-green-600 dark:text-green-400 group-hover:scale-110 transition-transform">
             <use xlink:href="#icon-icon_wechat-circle"></use>

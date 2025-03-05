@@ -106,8 +106,12 @@
       "code":"yaml",
       "name":"Markdown To Yaml",
       "description":""
-      
-    }
+     },
+     {
+      "code":"wikitable",
+      "name":"Markdown To WikiTable",
+      "description":""
+     }
    ]
  },
  {
@@ -130,7 +134,12 @@
          "name":"Yaml To Markdown",
          "description":""
          
-     }
+       },
+       {
+        "code":"wikitable",
+        "name":"Yaml To WikiTable",
+        "description":""
+      }
    ]
  },
  {
@@ -152,7 +161,11 @@
         "code":"md",
         "name":"SQL To Markdown",
         "description":""
-        
+    },
+    {
+      "code":"wikitable",
+      "name":"SQL To WikiTable",
+      "description":""
     }
   ]
 },
@@ -162,7 +175,7 @@
   "copy": true,
   "download": true,
   "accept": ".wiki",
-  "icon": "#icon-table",
+  "icon": "#icon-wikipedia",
   "color": "#8b5cf6",
   "canTran": [
     {

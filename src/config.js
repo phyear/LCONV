@@ -10,6 +10,13 @@ const config = {
     changelog: {
        versions: JSON.parse(import.meta.env.VITE_CHANGELOG_VERSIONS)
     },
+    social: {
+        github: import.meta.env.VITE_SOCIAL_GITHUB,
+        twitter: import.meta.env.VITE_SOCIAL_TWITTER,
+        linkedin: import.meta.env.VITE_SOCIAL_LINKEDIN,
+        gitee: import.meta.env.VITE_SOCIAL_GITEE,
+        wechat: import.meta.env.VITE_SOCIAL_WECHAT
+    }
 }
 
 export default config;

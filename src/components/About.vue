@@ -20,10 +20,10 @@
           <div class="flex items-center space-x-3">
             <div class="w-8 h-8 flex items-center justify-center text-blue-600">
               <svg class="w-6 h-6" fill="currentColor">
-                <use :xlink:href="getTechIcon(tech)"></use>
+                <use :xlink:href="tech.icon"></use>
               </svg>
             </div>
-            <span class="font-medium text-slate-700 dark:text-slate-200">{{ tech }}</span>
+            <span class="font-medium text-slate-700 dark:text-slate-200">{{ tech.name }}</span>
           </div>
         </div>
       </div>
