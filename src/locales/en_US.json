@@ -52,10 +52,39 @@
     "gen.html.type.thead": "Using thead and tbody",
     "gen.html.type.first_headers": "First row as header",
 
+    "gen.wikitable.name": "WikiTable",
+    "gen.wikitable.type.header": "Use header row",
+    "gen.wikitable.type.merge": "Enable cell merge",
+    "gen.wikitable.border.full": "Thick border",
+    "gen.wikitable.border.default": "Normal border",
+    "gen.wikitable.operation.header": "First row as header",
+    "gen.wikitable.operation.merge": "Merge adjacent cells",
+    "gen.wikitable.canTran.csv.name": "Convert to CSV format",
+
     "gen.sql.op.tableName":"Table Name",
     "gen.sql.op.multiLine":"MultiLine",
 
     "gen.yaml.op.keyValue":"Key Value",
-    "gen.yaml.op.prefix":"Prefix"
-
+    "gen.yaml.op.prefix":"Prefix",
+    "footer": {
+        "changelog": "Changelog",
+        "sponsor": "Sponsor",
+        "contact": "Contact",
+        "about": "About",
+        "rights": "All rights reserved"
+    },
+    "about": {
+        "title": "About",
+        "intro": "Project Introduction",
+        "description": "LConv is a data format conversion tool that provides intuitive table operations and multi format output capabilities.",
+        "tech_stack": "Technology Stack"
+    },
+    "contact": {
+        "title": "Contact Us",
+        "ways": "Contact Ways",
+        "email": "Email",
+        "address": "Address",
+        "phone": "Phone",
+        "social": "Social Media"
+    }
 }

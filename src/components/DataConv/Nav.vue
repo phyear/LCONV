@@ -1,14 +1,16 @@
 <template>
-    <nav class="max-w-screen-2xl w-full flex mx-auto h-20">
-    <div class="flex md:w-1/5  w-full">
-      <div class="flex items-center">
-        <svg class="icon text-2xl  fill-blue-600 stroke-2">
+    <nav class=" w-full flex mx-auto h-20">
+    <div class="flex sm:w-1/5 md:4/12 justify-center">
+     
+        <router-link to="/" class="flex items-center">
+        <svg class="icon text-2xl fill-blue-600 stroke-2">
           <use xlink:href="#icon-table_icon"></use>
         </svg>
         <div class="ml-2 text-xl font-bold text-blue-600 dark:text-blue-600">LConv</div>
-      </div>
+      </router-link>
+     
     </div>
-    <div class="flex md:w-4/5 w-full justify-around">
+    <div class="flex w-full justify-around">
       <div class="flex items-center md:w-3/5 w-full ">
          <div >
            
@@ -50,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref, getCurrentInstance} from 'vue';
+import { ref, getCurrentInstance, watchEffect} from 'vue';
 import {localeStore} from '../../store/Locale.js'
 import { useI18n } from 'vue-i18n';
 import { onMounted } from 'vue';
@@ -66,7 +68,13 @@ onMounted(() => {
    let theme = localeS.dark
    dark.value = theme == 'dark'
    checkTheme()
+  // 初始化语言状态
+  locale.value = localeS.locale
+})
 
+// 监听路由变化，确保语言状态正确更新
+watchEffect(() => {
+  locale.value = localeS.locale
 })
 
 const checkTheme = () => {

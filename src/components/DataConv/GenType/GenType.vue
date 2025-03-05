@@ -11,11 +11,12 @@
   import html from './Html.vue'
   import yaml from './Yaml.vue'
    import sql from './Sql.vue'
+import wikitable from './WikiTable.vue'
   import { rowColNumberStore } from '../../../store/RowColNumber'
   import { storeToRefs } from 'pinia'
   const rowColNumber = rowColNumberStore()
   const { getToType } = storeToRefs(rowColNumber)
 
-  const tabs = {excel, json, md, csv, html, yaml, sql}
+  const tabs = {excel, json, md, csv, html, yaml, sql, wikitable}
   
 </script>

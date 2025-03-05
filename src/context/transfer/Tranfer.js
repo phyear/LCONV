@@ -12,7 +12,7 @@ class Tranfer {
      */
     to2DArray(data) {
         // 检查文件格式或数据完整性，并将结果存储在result中
-        result = this.checkFile(text, result);
+        result = this.checkFile(data, result);
         // 如果result中包含error属性，则表示检查未通过，直接返回错误信息
         // 格式不符合返回错误信息
         if('error' in result){

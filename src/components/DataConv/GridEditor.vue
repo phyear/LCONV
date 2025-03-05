@@ -1,5 +1,5 @@
 <template>
-   <div class="max-w-screen-2xl m-auto p-6 dark:bg-slate-800 bg-white rounded-md flex flex-col gap-6 mb-8">
+   <div class="max-w-screen-2xl m-auto p-6 dark:bg-slate-800 bg-white rounded-md flex flex-wrap flex-col gap-6 mb-8">
         <div class="rounded-md flex items-center gap-x-2">
           <div class="w-7 h-7 rounded-full flex justify-center items-center" :style="{'background-color': toType.color}">
                 <svg class="icon  text-sm flex text-slate-100" aria-hidden="true">

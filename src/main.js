@@ -7,10 +7,13 @@ import ArcoVueIcon from '@arco-design/web-vue/es/icon';
 import { createPinia } from 'pinia'
 import { Notification } from '@arco-design/web-vue';
 import i18n from './locales.js'
+import router from './router/index.js'
+
 
 const app = createApp(App)
 .use(ArcoVue)
 .use(ArcoVueIcon)
 .use(createPinia())
 .use(i18n)
+.use(router)
 .mount('#app')

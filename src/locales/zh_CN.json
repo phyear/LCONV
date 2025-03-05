@@ -43,9 +43,60 @@
     "gen.html.type.thead": "使用thead和tbody",
     "gen.html.type.first_headers": "第一行作为表头",
 
+    "gen.wikitable.name": "Wiki表格",
+    "gen.wikitable.type.header": "使用表头行",
+    "gen.wikitable.type.merge": "启用单元格合并",
+    "gen.wikitable.border.full": "粗边框样式",
+    "gen.wikitable.border.default": "普通边框样式",
+    "gen.wikitable.operation.header": "首行作为表头",
+    "gen.wikitable.operation.merge": "合并相邻单元格",
+    "gen.wikitable.canTran.csv.name": "转CSV格式",
+    "gen.wikitable.op.title": "边框设置",
+
     "gen.sql.op.tableName": "自定义表格名称",
     "gen.sql.op.multiLine": "多行展示",
 
     "gen.yaml.op.keyValue": "K-V形式",
-    "gen.yaml.op.prefix": "前缀"
+    "gen.yaml.op.prefix": "前缀",
+    "footer": {
+        "changelog": "更新日志",
+        "sponsor": "赞助支持",
+        "contact": "联系我们",
+        "about": "关于我们",
+        "rights": "保留所有权利"
+    },
+    "about": {
+        "title": "关于",
+        "intro": "项目介绍",
+        "description": "LConv是一个数据格式转换工具，提供了直观的表格操作和多格式输出能力。",
+        "tech_stack": "技术栈"
+    },
+    "contact": {
+        "title": "联系我们",
+        "ways": "联系方式",
+        "email": "邮箱",
+        "address": "地址",
+        "phone": "电话",
+        "social": "社交账号",
+        "qrcode": {
+          "title": "扫码联系",
+          "wechat": "微信客服",
+          "alipay": "支付宝支持",
+          "qq": "QQ交流群",
+          "donate": "赞助二维码"
+        }
+    },
+    "changelog": {
+      "title": "更新历史",
+      "versions": [
+        {
+          "number": "v1.0.0",
+          "date": "2024-03-15",
+          "features": [
+            "初始版本发布",
+            "支持基础数据转换功能"
+          ]
+        }
+      ]
+    }
 }

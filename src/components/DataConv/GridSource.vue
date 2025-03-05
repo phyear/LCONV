@@ -1,14 +1,16 @@
 <template>
   <div class="max-w-screen-2xl m-auto p-6 dark:bg-slate-800 bg-white rounded-md flex flex-col gap-6 mb-8">
-    <div class="rounded-md flex items-center gap-x-2">
-      <div class="w-7 h-7 rounded-full flex justify-center items-center"
-        :style="{ 'background-color': getPreType.color ? getPreType.color : 'rgb(59 130 246)' }">
-        <svg class="icon  text-sm flex text-slate-100" aria-hidden="true">
-          <use v-bind:xlink:href="getPreType.icon"></use>
-        </svg>
+    <div class="rounded-md flex flex-wrap items-center gap-x-2">
+        <div class="flex gap-x-2"> 
+          <div class="w-7 h-7 rounded-full flex justify-center items-center"
+          :style="{ 'background-color': getPreType.color ? getPreType.color : 'rgb(59 130 246)' }">
+          <svg class="icon  text-sm flex text-slate-100" aria-hidden="true">
+            <use v-bind:xlink:href="getPreType.icon"></use>
+          </svg>
+        </div>
+        <div class="text-lg font-bold dark:text-white">Data Source</div>
       </div>
-      <div class="text-lg font-bold dark:text-white">Data Source</div>
-      <div class="">
+      <div class="flex">
         <a-space direction="vertical" size="large">
           <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="getPreCode"
             size='medium' @change="onChange">
@@ -18,7 +20,7 @@
         </a-space>
       </div>
       <!--对上传文件时 excel和csv支持多sheet页显示---->
-      <div class="" v-if="sheetNames.length > 0">
+      <div class="flex" v-if="sheetNames.length > 0">
         <a-space size="mini">
           <span><a-divider direction="vertical" />Sheet</span>
           <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="activeSheet"
@@ -29,14 +31,15 @@
         </a-space>
       </div>
 
-      <div>
+      <div class="flex">
         <a-button type="primary" shape="round" @click="$refs.fileInput.click()"
           class="bg-white text-blue-600 dark:hover:bg-blue-600  dark:hover:text-white border-blue-600 font-medium dark:bg-slate-700">
           {{ $t("source.btn.loading") }}
         </a-button>
         <input type="file" class="hidden" ref="fileInput" @change="onFileChange" :accept="getPreType?.accept">
       </div>
-      <div>
+
+      <div class="flex">
         <a-button type="primary" shape="round" @click="setExample"
           class="bg-white text-blue-600 border-blue-600  dark:hover:bg-blue-600 dark:hover:text-white font-medium dark:bg-slate-700">
           {{ $t("source.btn.other") }}
@@ -105,6 +108,7 @@ const onFileChange = async (e) => {
       sheetDataMap = excelData.sheetDataMap
     }
     if ('error' in excelData) {
+      let excelData = {};
       Notification.error({
         title: excelData.error,
         style: {}
@@ -160,10 +164,12 @@ const setExample = () => {
     type: ''
   }
   let exampleStr = dataHandle[getPreCode.value].toGenData(example, config)
+  console.log(exampleStr)
+ 
   let datas = dataHandle[getPreCode.value].to2DArray(exampleStr)
   if ('error' in datas) {
     Notification.error({
-      title: excelData.error,
+      title: datas.error,
       style: {}
     })
   } else {

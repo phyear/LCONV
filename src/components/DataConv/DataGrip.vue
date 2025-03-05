@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full">
-    <div class="w-3/12 h-64 grid gap-4 grid-cols-3 mr-3">
+  <div class="flex w-full flex-wrap">
+    <div class="md:w-3/12 sm:w-full h-64 grid gap-4 grid-cols-3 mr-3">
       <div @click="undo()"
         class="w-full h-full rounded-l-lg border-blue-500 border rounded-b-lg flex flex-col justify-center items-center gap-2 text-blue-500 hover:bg-blue-100  dark:hover:bg-slate-900 dark:hover:text-white">
         <div class="">
@@ -86,7 +86,7 @@
         <div class="text-xs"> {{ $t('edit.op.capitalize') }}</div>
       </div>
     </div>
-    <div class="w-11/12 h-100 p-2" style="overflow: hidden; z-index: 0;">
+    <div class="md:w-8/12 sm:w-full h-100 p-2" style="overflow: hidden; z-index: 0;">
        <DataArea/>
     </div>
   </div>

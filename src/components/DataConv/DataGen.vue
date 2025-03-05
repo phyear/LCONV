@@ -31,7 +31,7 @@
         </div>
         <div>
             <div class="w-full text-white font-bold dark:bg-slate-700">
-                <div class="p-2 bg-slate-100 dark:bg-slate-700 flex items-center justify-start gap-x-4">
+                <div class="p-2 flex flex-wrap bg-slate-100 dark:bg-slate-700  items-center justify-start gap-x-4">
                     <a-button v-for="(item, index) in source"
                      class="bg-slate-100  hover:bg-blue-600 hover:text-white font-medium dark:bg-slate-700  dark:hover:bg-blue-600 dark:hover:text-white" :class="{ active : item.code === getToTypeCode }" 
                      @click="btnClick(item.code)"

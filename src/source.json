@@ -155,5 +155,31 @@
         
     }
   ]
+},
+{
+  "name": "WikiTable",
+  "code": "wikitable",
+  "copy": true,
+  "download": true,
+  "accept": ".wiki",
+  "icon": "#icon-table",
+  "color": "#8b5cf6",
+  "canTran": [
+    {
+      "code": "csv",
+      "name": "WikiTable To CSV",
+      "description": ""
+    },
+    {
+      "code": "excel",
+      "name": "WikiTable To Excel",
+      "description": ""
+    },
+    {
+      "code": "md",
+      "name": "WikiTable To Markdown",
+      "description": ""
+    }
+  ]
 }
 ]

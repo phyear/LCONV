@@ -3,6 +3,7 @@ import { excelTransfer } from './transfer/ExcelTransfer.js'
 import { jsonTransfer } from './transfer/JsonTransfer.js'
 import { htmlTransfer } from './transfer/HtmlTransfer.js'
 import { markdownTransfer } from './transfer/MarkdownTransfer.js'
+import { wikitableTransfer } from './transfer/WikitableTransfer.js'
 import { yamlTransfer } from './transfer/YamlTransfer.js'
 import { sqlTransfer } from './transfer/SqlTransfer.js'
 
@@ -16,7 +17,8 @@ const dataHandle = {
     'html': htmlTransfer,
     'md': markdownTransfer,
     'yaml': yamlTransfer,
-    'sql': sqlTransfer
+    'sql': sqlTransfer,
+    'wikitable': wikitableTransfer
 }
 
 // 输入验证函数，你可以根据实际情况调整这些验证函数的实现

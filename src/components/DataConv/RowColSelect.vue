@@ -1,12 +1,18 @@
 <template>
-       <table border="1" cellspacing="2" style="border-collapse: collapse;" >
+   <div class="table-container">
+       <table border="1" cellspacing="2" style="border-collapse: collapse;"  class="modern-table">
          <tr  v-for="(row,rowIndex) in 20" :key="rowIndex" >
-            <td style = "width: 12px; height: 12px;border:1px solid #eeeeee" v-for="(row,cellIndex) in 20" :key="cellIndex"  @mouseover="handleMouseOver(rowIndex, cellIndex)"
-            :style="{backgroundColor: rowIndex <= rowCount && cellIndex <= colCount  ? 'rgb(191 219 254)' : 'white'}"
-             @click="updateRowColNumber(rowIndex + 1, cellIndex + 1)">
-            </td>
+            <td
+               class="table-cell"
+               v-for="(cell, cellIndex) in 20"
+               :key="cellIndex"
+               @mouseover="handleMouseOver(rowIndex, cellIndex)"
+               :class="{ 'highlighted': rowIndex <= rowCount && cellIndex <= colCount }"
+               @click="updateRowColNumber(rowIndex + 1, cellIndex + 1)"
+            ></td>
          </tr>
        </table>
+       </div>
 </template>
 
 <script setup>
@@ -76,4 +82,36 @@
 
    } 
 </script>
+
+<style scoped>
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #e2e8f0;
+}
+
+.modern-table {
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-cell {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.table-cell.highlighted {
+  background-color: #bfdbfe;
+}
+
+.table-cell:hover {
+  background-color: #e2e8f0;
+}
+</style>
 
