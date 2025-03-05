@@ -118,3 +118,12 @@ import config from '../config.js'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 </script>
+
+<style scoped>
+.max-container {
+  max-width: 1580px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  min-height: 84vh;
+}
+</style>

@@ -37,5 +37,6 @@ const { t } = useI18n()
   max-width: 1580px;
   margin: 0 auto;
   padding: 0 1rem;
+  min-height: 84vh;
 }
 </style>

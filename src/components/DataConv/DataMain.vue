@@ -9,7 +9,6 @@
       <SelectList />
 </template>
 <script setup>
-    import RowColSelect from './/RowColSelect.vue'
     import GridEditor from './GridEditor.vue'
     import GridSource from './GridSource.vue'
     import DataGen from './DataGen.vue'

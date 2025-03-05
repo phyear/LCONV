@@ -1,10 +1,5 @@
 <script setup>
-import SelectList from './components/DataConv/SelectList.vue'
 import Nav from './components/DataConv/Nav.vue'
-import RowColSelect from './components/DataConv/RowColSelect.vue'
-import GridEditor from './components/DataConv/GridEditor.vue'
-import GridSource from './components/DataConv/GridSource.vue'
-import DataGen from './components/DataConv/DataGen.vue'
 import { SpeedInsights } from '@vercel/speed-insights/vue';
 import Footer from './components/DataConv/Footer.vue'
 
