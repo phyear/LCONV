@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { code_type } from '../util/source.js'
+import {source, tran, tran_to_code, getCanTranList} from '../util/source.js'
 
 export const rowColNumberStore = defineStore('rowColNumber', {
   state: () => ({
@@ -14,7 +14,9 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     currentIndex:0,
     sourceData:[['','',''],['','',''],['','',''],['','',''],['','','']], // 统一二维数组 受DataSource影响,
     sourceText:null, // 源文本
-    genText: null
+    genText: null,
+    source: source,
+    code_type: tran_to_code(source),
   }),
   getters: {
     getRow: (state) => state.row,
@@ -29,7 +31,11 @@ export const rowColNumberStore = defineStore('rowColNumber', {
        return state.toType.code
     },
     getData: (state) => state.data,
-  }, 
+    getSource: (state) => state.source,
+    getAllTrans: (state) => tran(state.source, state.code_type),
+    getCanTran: (state) => getCanTranList(state.preType['canTran'], state.code_type),
+    getCodeType: (state) => tran_to_code(state.source),
+  },
   actions: {
     setRow(row) {
       this.row = row
@@ -39,6 +45,7 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     },
     setToType(data) {
       this.toType = data
+      this.toTypeCode = data.code
     },
     setHidden(hidden) {
       this.hidden = hidden
@@ -66,8 +73,8 @@ export const rowColNumberStore = defineStore('rowColNumber', {
       this.data = data
     },
     setTransTo(preCode, endCode) {
-        let pre = code_type[preCode]
-        let end = code_type[endCode]
+        let pre = this.code_type[preCode]
+        let end = this.code_type[endCode]
         this.setTypeInfo(pre, end)
     },
     // 设置源类型 以及默认转换类型以及可转换类型
@@ -78,16 +85,16 @@ export const rowColNumberStore = defineStore('rowColNumber', {
         let aa = []
         for(let i = 0; i < list.length; i++){
           let item = list[i]
-          aa.push(code_type[item['code']])
+          aa.push(this.code_type[item['code']])
         }
         this.canTrans = aa
       } 
       if(!endData){
-        let code = list[0]['code']
-        this.toType = code_type[code]
-      } else {
-        this.toType = endData
-      }
+         endData = this.canTrans[0]
+      } 
+      this.toType = endData
+      this.toTypeCode = endData.code
+
       this.sourceText = null
       this.sourceData = [['','',''],['','',''],['','',''],['','',''],['','','']]
     },
@@ -97,6 +104,14 @@ export const rowColNumberStore = defineStore('rowColNumber', {
     },
     setGenText(data){
       this.genText = data
+    },
+    setSource(code_type, data){
+      this.code_type = code_type
+      this.source = data
+    },
+    setSource1(data){
+      this.code_type = tran_to_code(data)
+      this.source = data
     }
   }
 })

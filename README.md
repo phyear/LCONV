@@ -18,11 +18,19 @@
 ### 🏝️ 体验地址
 [lcon.whycoder.fun](https://lcon.whycoder.fun/)
 
-### 🎯 规划路线
+## 📌 核心功能
 
-#### 2025-03-01 支持
-- [x] 移动端样式支持
-- [x] 支持wikiTable
+✅ **全格式支持**  
+Excel ↔ CSV ↔ JSON ↔ XML ↔ Markdown ↔ HTML ↔ YAML ↔ SQL ↔ WikiTable
+
+✅ **高级特性**  
+- 多Sheet页Excel处理  
+- 表格单元格合并  
+- 数据格式自动检测  
+
+✅ **即将到来**  
+- [ ] 自定义转换规则
+- [ ] 支持更多的语言
 
 #### 2025-02-17 支持
 - [x] 界面响应速度优化

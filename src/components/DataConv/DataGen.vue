@@ -13,7 +13,7 @@
             <div class="flex gap-2">
                 <a-button 
                     class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white"
-                    @click="copyToClipboard">
+                    @click="copyToClipboard" v-if="toType.copy == true">
                     <template #icon>
                         <icon-copy />
                     </template>
@@ -21,6 +21,7 @@
                 </a-button>
                 <a-button 
                    class="bg-white text-blue-600 dark:bg-slate-700 dark:text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white"
+                   v-if="toType.download == true"
                    @click="downloadToFile">
                     <template #icon>
                         <icon-download />
@@ -32,10 +33,9 @@
         <div>
             <div class="w-full text-white font-bold dark:bg-slate-700">
                 <div class="p-2 flex flex-wrap bg-slate-100 dark:bg-slate-700  items-center justify-start gap-x-4">
-                    <a-button v-for="(item, index) in source"
+                    <a-button v-for="(item, index) in getCanTran"
                      class="bg-slate-100  hover:bg-blue-600 hover:text-white font-medium dark:bg-slate-700  dark:hover:bg-blue-600 dark:hover:text-white" :class="{ active : item.code === getToTypeCode }" 
-                     @click="btnClick(item.code)"
-                     >{{ item.name }} </a-button>
+                     @click="btnClick(item.code)">{{ item.name }} </a-button>
                 </div>
             </div>
 
@@ -43,7 +43,6 @@
                 <GenType/>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -51,17 +50,16 @@
     import GenType from '../DataConv/GenType/GenType.vue'
     import { rowColNumberStore } from '../../store/RowColNumber'
     import { storeToRefs } from 'pinia'
-    import { code_type, source } from '../../util/source.js'
     import { dataHandle } from '../../context/TransferContext'
 
     const counterStore = rowColNumberStore()
-    const { canTrans , toType, getToTypeCode, sourceData} = storeToRefs(counterStore)
+    const {toType, getToTypeCode, sourceData, getSource, getCanTran, getCodeType} = storeToRefs(counterStore)
     import { Notification } from '@arco-design/web-vue';
       import { writeText } from 'clipboard-polyfill';
 
     
     const btnClick = (key) => {
-        counterStore.setToType(code_type[key])
+        counterStore.setToType(getCodeType.value[key])
     }
   
     const copyToClipboard = async() => {

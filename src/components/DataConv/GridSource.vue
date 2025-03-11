@@ -77,19 +77,18 @@ let sheetDataMap = reactive({})
 
 
 
-const { getPreType, getPreCode, sourceText } = storeToRefs(rowColNumber)
+const { getPreType, getPreCode, sourceText , getSource, getCodeType} = storeToRefs(rowColNumber)
 
 
 onMounted(() => {
-  data.push(...source)
+  data.push(...getSource.value)
   // 初始化 转换对象的默认值以及可转换列表
-  rowColNumber.setTypeInfo(source[0], null)
+  rowColNumber.setTypeInfo(getSource.value[0], null)
 })
 
 // 当切换sheet页时
 
 const onSheetChange = (value) => {
-  console.log(sheetDataMap)
   let excelData = sheetDataMap[value]
   rowColNumber.setSourceData(excelData.sourceData);
   rowColNumber.data = excelData.sourceData;
@@ -131,6 +130,7 @@ const onFileChange = async (e) => {
 
 const onChange = (value) => {
   const preData = data.find(item => item.code === value)
+  console.log('preCode=', preData)
   rowColNumber.setTypeInfo(preData)
   sheetNames = []
   sheetDataMap = {}
@@ -164,7 +164,6 @@ const setExample = () => {
     type: ''
   }
   let exampleStr = dataHandle[getPreCode.value].toGenData(example, config)
-  console.log(exampleStr)
  
   let datas = dataHandle[getPreCode.value].to2DArray(exampleStr)
   if ('error' in datas) {

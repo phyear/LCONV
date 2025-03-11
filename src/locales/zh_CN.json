@@ -88,5 +88,13 @@
     },
     "changelog": {
       "title": "更新历史"
+    },
+    "settings":{
+      "basic": "基础设置",
+      "transfer": "转换规则设置",
+      "btn":{
+         "download": "导出设置",
+         "upload": "上传自定义设置"
+      }
     }
 }

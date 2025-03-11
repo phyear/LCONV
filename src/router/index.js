@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Changelog from '@/components/Changelog.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,7 +21,12 @@ const router = createRouter({
       {
         path: '/changelog',
         name: 'Changelog',
-        component: Changelog
+        component: () => import('../components/Changelog.vue')
+      },
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: () => import('../components/Setting.vue')
       },
   ]
 })

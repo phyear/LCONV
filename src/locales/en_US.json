@@ -89,5 +89,13 @@
     },
     "changelog": {
       "title": "Changelog"
+    },
+    "settings":{
+      "basic": "Basic",
+      "transfer": "Transpose Settings",
+      "btn":{
+         "download": "Export Settings",
+         "upload": "Import Settings"
+      }
     }
 }

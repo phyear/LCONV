@@ -27,15 +27,15 @@
 </template>
 
 <script setup>
-    import { onMounted, reactive, ref } from 'vue';
-    import {all_trans, code_type} from '../../util/source';
-
+    import { onMounted, reactive } from 'vue';
+    import { storeToRefs } from 'pinia'
     import { rowColNumberStore } from '../../store/RowColNumber'
 
    const counterStore = rowColNumberStore()  
+   const { getAllTrans } = storeToRefs(counterStore)
     const data = reactive([]);
     onMounted(() => {
-        data.push(...all_trans);
+        data.push(...getAllTrans.value);
     });
 
     const transTo = (preCode, endCode) => {

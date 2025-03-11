@@ -1,6 +1,9 @@
-import source from '../source.json';
+import source1 from '../source.json';
 
-function tran(data, code_type){
+
+
+
+function tran(data, code_type) {
     let all_trans = [];
     for (let i = 0; i < data.length; i++) {
         let preCode = data[i]['code'];
@@ -9,11 +12,11 @@ function tran(data, code_type){
             let endCode = tran['code'];
             tran['pre_code'] = preCode;
             tran['op_code'] = preCode + '_' + endCode;
-            if(!tran['name']){
+            if (!tran['name']) {
                 tran['name'] = preCode + ' To ' + endCode;
             }
             // 如果可转换图标为空则使用目标类型的icon
-            if(!tran['icon']){
+            if (!tran['icon']) {
                 tran['icon'] = code_type[endCode]['icon'];
             }
             tran['color'] = code_type[endCode]['color'];
@@ -24,17 +27,37 @@ function tran(data, code_type){
 }
 
 function tran_to_code(data) {
-   let map = {};
+    let map = {};
     for (let i = 0; i < data.length; i++) {
         let code = data[i]['code']
+        let canTran = data[i]['canTran']
         map[code] = data[i];
+        let canTranMap = {};
+        for (let j = 0; j < canTran.length; j++) {
+            let code = canTran[j]['code']
+            canTranMap[code] = canTran[j];
+        }
+        data[i]['canTranMap'] = canTranMap;
     }
     return map;
 }
 
-const code_type = tran_to_code(source);
+function getCanTranList(cantran, code_type) {
+    let aa = []
+    for (let index in cantran) {
+        aa.push(code_type[cantran[index]['code']])
+    }    
+    return aa 
+}
+    
 
-const all_trans = tran(source, code_type);
+let source = localStorage.getItem('default-setting');
+if (source) {
+    source = JSON.parse(source);
+} else {
+    source = source1;
+}
 
 
-export{source, all_trans, code_type}
+
+export { source,  tran, tran_to_code, getCanTranList}
