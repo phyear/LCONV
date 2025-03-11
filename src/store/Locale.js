@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import zhCN from '@arco-design/web-vue/es/locale/lang/zh-cn';
 import enUS from '@arco-design/web-vue/es/locale/lang/en-us';
+import ja from '@arco-design/web-vue/es/locale/lang/ja-jp';
 
 const dark = () => {
     let dark = localStorage.getItem('lconv.dark')
@@ -28,7 +29,8 @@ export const localeStore = defineStore('locale', {
         getLocale: (state) => {
             const localeMap = {
                 "zh_CN": zhCN,
-                "en_US": enUS
+                "en_US": enUS,
+                "ja": ja
             }
             return localeMap[state.locale]
         },

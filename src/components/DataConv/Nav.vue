@@ -34,11 +34,23 @@
                   <div v-if="locale == 'en_US'" class="flex items-center">
                      <icon-english-fill  class="w-6 h-6 text-blue-600 dark:text-blue-600" />
                   </div>
+                  <div v-if="locale == 'ja_JP'" class="flex items-center">
+                    <svg class="icon text-2xl fill-blue-600 stroke-2  bg-blue-600 w-5 h-5 rounded">
+                      <use xlink:href="#icon-riyu1"></use>
+                    </svg>
+                  </div>
+                  <div v-if="locale == 'ko_KR'" class="flex items-center">
+                    <svg class="icon  stroke-2 text-blue-600 w-5 h-5  rounded">
+                      <use xlink:href="#icon-hanyu1"></use>
+                    </svg>
+                  </div>
                 </template>
               </a-button>
               <template #content>
                 <a-doption @click="setLocale('zh_CN')">中文</a-doption>
                 <a-doption @click="setLocale('en_US')">English</a-doption>
+                <a-doption @click="setLocale('ja_JP')">日本語</a-doption>
+                <a-doption @click="setLocale('ko_KR')">한국어</a-doption>
               </template>
           </a-dropdown>
          </div>
