@@ -46,9 +46,9 @@
          <a href="https://github.com/phyear/LCONV" class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-200 dark:bg-slate-800   text-slate-900 dark:text-slate-100">
             <icon-github class="w-6 h-6 text-blue-600 dark:text-blue-600" />
          </a>
-         <a href="/settings" class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-200 dark:bg-slate-800   text-slate-900 dark:text-slate-100">
+         <router-link :to = "{ name: 'setting' }" class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-200 dark:bg-slate-800   text-slate-900 dark:text-slate-100">
             <icon-settings class="w-6 h-6 text-blue-600 dark:text-blue-600" />
-         </a>
+         </router-link>
       </div>
     </div>
   </nav>
