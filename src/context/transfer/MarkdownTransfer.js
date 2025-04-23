@@ -1,6 +1,6 @@
 import { Tranfer } from './Tranfer.js'
 import { marked } from 'marked';
-import cheerio from 'cheerio';
+import {load} from 'cheerio';
 
 
 class MarkdownTransfer extends Tranfer {
@@ -81,7 +81,7 @@ class MarkdownTransfer extends Tranfer {
   }
 
   htmlToArray(html) {
-    const $ = cheerio.load(html);
+    const $ = load(html);
     const tableElement = $('table');
 
     // 获取表格的HTML代码

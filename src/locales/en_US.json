@@ -1,6 +1,7 @@
 {
     "source.btn.loading": "Load File",
     "source.btn.other": "Load Example",
+    "source.btn.remote": "Remote File",
 
     "edit.op.undo":"Undo",
     "edit.op.redo":"Redo",

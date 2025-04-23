@@ -1,6 +1,7 @@
 {
     "source.btn.loading": "上传附件",
     "source.btn.other": "生成用例",
+    "source.btn.remote": "远程地址",
     "edit.op.undo": "撤销",
     "edit.op.redo": "恢复",
     "edit.op.transpose": "转换",

@@ -1,5 +1,5 @@
 import {Tranfer} from './Tranfer.js'
-import cheerio from 'cheerio';
+import {load} from 'cheerio';
 
 
 class HtmlTransfer extends Tranfer {
@@ -9,7 +9,7 @@ class HtmlTransfer extends Tranfer {
     }
 
     to2DArray(data) {
-        const $ = cheerio.load(data);
+        const $ = load(data);
         const tableElement = $('table');
 
         // 获取表格的HTML代码

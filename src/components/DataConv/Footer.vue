@@ -20,7 +20,7 @@
           </router-link>
         </div>
         <div class="text-slate-600 dark:text-slate-400 text-sm bg-indigo-50/60 dark:bg-slate-700/90 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow">
-          © 2024 LConv. {{ $t('footer.rights') }}
+          蜀ICP备2025137138号 
         </div>
       </div>
     </div>

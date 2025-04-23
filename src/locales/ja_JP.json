@@ -1,6 +1,7 @@
 {
     "source.btn.loading": "ファイルをアップロード",
     "source.btn.other": "テストケースを生成",
+    "source.btn.remote": "リモートアドレス",
     "edit.op.undo": "元に戻す",
     "edit.op.redo": "やり直す",
     "edit.op.transpose": "転置",

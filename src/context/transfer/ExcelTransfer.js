@@ -41,6 +41,7 @@ class ExcelTransfer extends Tranfer {
     }
 
     fileToData(data){
+        console.log('data:', data)
         const workbook = XLSX.read(data, { type: 'binary', cellDates: true, dateNF: 'YYYY-MM-dd HH:mm:ss'});
 
         const sheetNames = workbook.SheetNames;

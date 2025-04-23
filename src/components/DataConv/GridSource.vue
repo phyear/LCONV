@@ -45,6 +45,25 @@
           {{ $t("source.btn.other") }}
         </a-button>
       </div>
+      <div class="flex">
+        <a-popover position="bottom">
+          <a-button type="primary" shape="round" @click=""
+            class="bg-white text-blue-600 border-blue-600  dark:hover:bg-blue-600 dark:hover:text-white font-medium dark:bg-slate-700">
+            {{ $t("source.btn.remote") }}
+          </a-button>
+          <template #content>
+            <div class="flex gap-4">
+              <a-input-search type="primary" shape="round" @search="remoteFile"
+                class="bg-white text-blue-600 border-blue-600  dark:hover:bg-blue-600 dark:hover:text-white font-medium dark:bg-slate-700"
+                search-button>
+                <template #button-icon>
+                  <icon-link />
+                </template>
+              </a-input-search>
+            </div>
+           </template>
+        </a-popover>
+      </div>
     </div>
     <div class="w-full text-white font-bold">
       <a-textarea v-model="sourceText" @change="textChange"
@@ -56,13 +75,13 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { source } from '../../util/source'
 import { readExcel } from '../../util/fileutil'
 import { rowColNumberStore } from '../../store/RowColNumber'
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia'
 import { TransferContext, dataHandle } from '../../context/TransferContext'
 import { Notification } from '@arco-design/web-vue';
+import axios from 'axios';
 
 const rowColNumber = rowColNumberStore()
 
@@ -77,7 +96,7 @@ let sheetDataMap = reactive({})
 
 
 
-const { getPreType, getPreCode, sourceText , getSource, getCodeType} = storeToRefs(rowColNumber)
+const { getPreType, getPreCode, sourceText , getSource} = storeToRefs(rowColNumber)
 
 
 onMounted(() => {
@@ -86,8 +105,34 @@ onMounted(() => {
   rowColNumber.setTypeInfo(getSource.value[0], null)
 })
 
-// 当切换sheet页时
+const remoteFile = async (url) => {
+    console.log('remoteFile', url)
+    const fileName = url.substring(url.lastIndexOf('/') + 1)
+    const fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
+    // 校验文件类型
+    let successed = checkFileType(fileType)
+    if (successed) {
+      // 根据远程地址获取文件内容
+      const response = await axios.get(url, {responseType: 'blob'})
+      if (response.status === 200) {
+          const file = new File([response.data], fileName, {
+            type: response.data.type
+          });
+          await handleFile(file)
+      }
+    } else {
+      Notification.error({
+          title: '文件格式不匹配',
+          style: {}
+        })
+    }
+  }
 
+  const checkFileType = (fileType) => {
+    let type = getPreType.value.accept
+    return type.includes(fileType)
+  }
+// 当切换sheet页时
 const onSheetChange = (value) => {
   let excelData = sheetDataMap[value]
   rowColNumber.setSourceData(excelData.sourceData);
@@ -100,7 +145,12 @@ const onSheetChange = (value) => {
 const onFileChange = async (e) => {
   const file = e.target.files[0];
   if (file) {
-    const excelData = await readExcel(file, getPreCode.value);
+    await handleFile(file)
+  }
+}
+
+const handleFile = async (file) => {
+  const excelData =  await readExcel(file, getPreCode.value);
     if (excelData.sheetNames != null) {
       sheetNames = excelData.sheetNames
       activeSheet.value = excelData.sheetNames[0]
@@ -125,7 +175,6 @@ const onFileChange = async (e) => {
         rowColNumber.setHistoryData(excelData.sourceData)
       }
     }
-  }
 }
 
 const onChange = (value) => {

@@ -1,6 +1,7 @@
 {
     "source.btn.loading": "첨부파일 업로드",
     "source.btn.other": "테스트 케이스 생성",
+    "source.btn.remote": "원격 주소",
     "edit.op.undo": "실행취소",
     "edit.op.redo": "다시실행",
     "edit.op.transpose": "전치",
