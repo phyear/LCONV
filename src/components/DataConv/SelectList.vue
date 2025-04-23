@@ -32,15 +32,15 @@
     import { rowColNumberStore } from '../../store/RowColNumber'
 
    const counterStore = rowColNumberStore()  
-   const { getAllTrans } = storeToRefs(counterStore)
+   const { getAllTrans, code_type} = storeToRefs(counterStore)
     const data = reactive([]);
     onMounted(() => {
         data.push(...getAllTrans.value);
     });
 
     const transTo = (preCode, endCode) => {
-      let pre = code_type[preCode]
-      let end = code_type[endCode]
+      let pre = counterStore.code_type[preCode]
+      let end = counterStore.code_type[endCode]
       counterStore.setTypeInfo(pre, end);
     }
    

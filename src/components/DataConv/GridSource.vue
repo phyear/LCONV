@@ -12,7 +12,7 @@
       </div>
       <div class="flex">
         <a-space direction="vertical" size="large">
-          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="getPreCode"
+          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="preType.code"
             size='medium' @change="onChange">
             <a-option v-for="(item, index) in data" :key="index" :value="item.code" class="text-md">{{ item.name
               }}</a-option>
@@ -96,7 +96,7 @@ let sheetDataMap = reactive({})
 
 
 
-const { getPreType, getPreCode, sourceText , getSource} = storeToRefs(rowColNumber)
+const { getPreType, getPreCode, sourceText , getSource, preType} = storeToRefs(rowColNumber)
 
 
 onMounted(() => {
@@ -179,7 +179,6 @@ const handleFile = async (file) => {
 
 const onChange = (value) => {
   const preData = data.find(item => item.code === value)
-  console.log('preCode=', preData)
   rowColNumber.setTypeInfo(preData)
   sheetNames = []
   sheetDataMap = {}
