@@ -1,5 +1,6 @@
 <template>
-     <!--数据来源区域-->
+    <div>
+      <!--数据来源区域-->
       <GridSource />
       <!--数据编辑区域-->
       <GridEditor />
@@ -7,6 +8,7 @@
       <DataGen />
       <!--选项卡片区域-->
       <SelectList />
+    </div>
 </template>
 <script setup>
     import GridEditor from './GridEditor.vue'

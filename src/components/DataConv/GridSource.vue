@@ -12,7 +12,7 @@
       </div>
       <div class="flex">
         <a-space direction="vertical" size="large">
-          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="preType.code"
+          <a-select :style="{ width: '100px' }" class="text-xl text-blue-600 " :bordered="false" v-model="preCode"
             size='medium' @change="onChange">
             <a-option v-for="(item, index) in data" :key="index" :value="item.code" class="text-md">{{ item.name
               }}</a-option>
@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch} from 'vue'
 import { readExcel } from '../../util/fileutil'
 import { rowColNumberStore } from '../../store/RowColNumber'
 import { onMounted } from 'vue';
@@ -96,13 +96,19 @@ let sheetDataMap = reactive({})
 
 
 
+
 const { getPreType, getPreCode, sourceText , getSource, preType} = storeToRefs(rowColNumber)
 
+const preCode = ref(getPreCode.value)
 
 onMounted(() => {
   data.push(...getSource.value)
   // 初始化 转换对象的默认值以及可转换列表
   rowColNumber.setTypeInfo(getSource.value[0], null)
+})
+
+watch(getPreCode, (val) => {
+  preCode.value = val
 })
 
 const remoteFile = async (url) => {
